@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duqo1ys4v6uc1"]
+
+[ext_resource type="Script" path="res://scenes_scripts/field/generator/defaultFieldGenerator.gd" id="1_hinxi"]
+
+[node name="DefaultFieldGenerator" type="Node"]
+script = ExtResource("1_hinxi")

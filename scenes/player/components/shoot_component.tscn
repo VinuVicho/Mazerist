@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://86srb5gqho6m"]
+
+[ext_resource type="Script" path="res://scenes_scripts/player/components/shoot_component.gd" id="1_muqb0"]
+
+[node name="ShootComponent" type="Node" groups=["ShootComponent", "TankComponent"]]
+script = ExtResource("1_muqb0")

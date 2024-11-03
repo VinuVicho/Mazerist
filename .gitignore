@@ -37,3 +37,4 @@ mono_crash.*.json
 #.Trashes
 #ehthumbs.db
 #desktop.ini
+.idea

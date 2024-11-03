@@ -1,5 +1,11 @@
 extends Node
 
+var services: Dictionary = {} 
+var allServicesLoaded := false
+#	get_tree().root.get_node("MainScene")			get mainScene node
+
+
+var webService: WebService
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

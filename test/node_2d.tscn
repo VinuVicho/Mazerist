@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ettfubcrvvkd"]
+
+[node name="Node2D" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(341, 102, 342, 180, 390, 187, 404, 111)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(218, 98, 223, 166, 281, 162, 273, 105)

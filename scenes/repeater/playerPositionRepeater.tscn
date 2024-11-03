@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmebic281vs8t"]
+
+[ext_resource type="Script" path="res://scripts/repeater_control/actionsRepeaterControl.gd" id="1_c1cse"]
+[ext_resource type="PackedScene" uid="uid://v5jlp7ovuai0" path="res://scenes/repeater/timerForRepeater.tscn" id="2_e4vjt"]
+
+[node name="PlayerPositionRepeater" type="Node"]
+script = ExtResource("1_c1cse")
+
+[node name="Timer" parent="." instance=ExtResource("2_e4vjt")]

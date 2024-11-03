@@ -1,0 +1,13 @@
+class_name ActionsType
+
+enum {
+	TANK_SPAWNED, 
+	TANK_DIED, 
+	TURN_RIGHT, 
+	TURN_LEFT, 
+	STOP_ROTATING, 
+	MOVE_FORWARD, 
+	MOVE_BACKWARDS, 
+	STOP_MOVING,
+	SHOOT,
+}

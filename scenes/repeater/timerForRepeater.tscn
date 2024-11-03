@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://v5jlp7ovuai0"]
+
+[node name="Timer" type="Timer" groups=["RepeaterTimer"]]
+one_shot = true

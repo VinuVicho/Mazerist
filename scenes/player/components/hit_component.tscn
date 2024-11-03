@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://btfropalg0ehc"]
+
+[ext_resource type="Script" path="res://scenes_scripts/player/components/hitComponent.gd" id="1_l8gcp"]
+
+[node name="HitComponent" type="Node" groups=["HitComponent", "TankComponent"]]
+script = ExtResource("1_l8gcp")

@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct3b00f8347jt"]
+
+[ext_resource type="Script" path="res://scenes_scripts/field/fieldController.gd" id="1_vkkev"]
+[ext_resource type="PackedScene" uid="uid://n5cpjf6nqql8" path="res://scenes/field/wall.tscn" id="3_0d7r4"]
+
+[sub_resource type="CameraTexture" id="CameraTexture_2g7t2"]
+
+[node name="FieldController" type="Node"]
+script = ExtResource("1_vkkev")
+
+[node name="TimerToStart" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="EndGameTimer" type="Timer" parent="."]
+wait_time = 4.628
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 44.0
+offset_top = 18.0
+offset_right = 84.0
+offset_bottom = 41.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="FieldCamera" type="Camera2D" parent="SubViewport"]
+enabled = false
+
+[node name="Field" type="Node2D" parent="SubViewport"]
+
+[node name="Wall" parent="SubViewport/Field" instance=ExtResource("3_0d7r4")]
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+visible = false
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+stretch_mode = 1
+
+[node name="FieldProjection" type="Sprite2D" parent="AspectRatioContainer"]
+texture = SubResource("CameraTexture_2g7t2")
+centered = false
+
+[node name="Wall" parent="." instance=ExtResource("3_0d7r4")]
+
+[node name="FieldContainerForNow" type="Node2D" parent="."]
+
+[node name="FieldContainerForNow" type="Node2D" parent="FieldContainerForNow"]
+
+[connection signal="timeout" from="TimerToStart" to="." method="_on_timer_to_start_timeout"]
+[connection signal="timeout" from="EndGameTimer" to="." method="_on_end_game_timer_timeout"]

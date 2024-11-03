@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2qghhwseeqyx"]
+
+[ext_resource type="Script" path="res://scenes_scripts/web/web_service.gd" id="1_ckik5"]
+
+[node name="WebService" type="Node"]
+script = ExtResource("1_ckik5")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="MapRequestHTTP" type="HTTPRequest" parent="."]
