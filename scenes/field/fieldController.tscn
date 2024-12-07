@@ -46,6 +46,12 @@ centered = false
 
 [node name="Wall" parent="." instance=ExtResource("3_0d7r4")]
 
+[node name="Wall2" parent="." instance=ExtResource("3_0d7r4")]
+position = Vector2(842, 314)
+
+[node name="Wall3" parent="." instance=ExtResource("3_0d7r4")]
+position = Vector2(332, 625)
+
 [node name="FieldContainerForNow" type="Node2D" parent="."]
 
 [node name="FieldContainerForNow" type="Node2D" parent="FieldContainerForNow"]

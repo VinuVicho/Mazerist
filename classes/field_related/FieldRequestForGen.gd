@@ -24,3 +24,17 @@ func toJSON():
 		"playersPositionType": playersPositionType, 
 	}
 	return dictWithInfo
+
+
+func _to_string() -> String:
+	return JSON.stringify({
+		"minSizeX": minSizeX, 
+		"minSizeY": minSizeY, 
+		"maxSizeX": maxSizeX, 
+		"maxSizeY": maxSizeY, 
+		"wallsPercentage": wallsPercentage, 
+		"fieldSeed": fieldSeed, 
+		"playersNumber": playersNumber, 
+		"fieldGenerationType": fieldGenerationType, 
+		"playersPositionType": playersPositionType, 
+	})

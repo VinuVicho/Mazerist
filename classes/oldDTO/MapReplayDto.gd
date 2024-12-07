@@ -1,14 +1,12 @@
-class_name MapReplay
+class_name MapReplayDto
 
 var gameId: int
-var players: Array[PlayerInfo]				#TODO:delete
-var playerDictionary: Dictionary			#TODO make this -> in backend {0: playerInfo} 0 here is playerId in game
-var mapInfo: MapInfo = MapInfo.new()
+var players: Array[PlayerInfo]
+var mapInfoDto: MapInfoDto = MapInfoDto.new()
 var replays: Array[SingleReplay]
-var gameTime: int = 10
-var turn: int
+var gameTime: int
 
-func toJSON() -> Dictionary:
+func toJSON():
 	var playersInfo = []
 	for player in players:
 		playersInfo.append(player.toJSON())
@@ -18,12 +16,8 @@ func toJSON() -> Dictionary:
 	var dictWithInfo = {
 		"gameId": gameId, 
 		"players": playersInfo, 
-		"mapInfo": mapInfo.toJSON(), 
+		"mapInfoDto": mapInfoDto.toJSON(), 
 		"replays": replayInfo,
 		"gameTime": gameTime,
-		"turn": turn,
 	}
 	return dictWithInfo
-
-
-

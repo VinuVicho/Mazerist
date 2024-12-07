@@ -10,5 +10,5 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[node name="CircleSprite" type="Sprite2D"]
+[node name="CircleSprite" type="Sprite2D" groups=["testCircle1"]]
 texture = SubResource("GradientTexture2D_y401i")

@@ -7,7 +7,7 @@ var sizeY: int
 #Всередині буде PackedByteArray
 var verticalWallsPositions: Array = []
 var horizontalWallsPositions: Array = []
-var objectsPositions: Array = [] 				#dictionary, to sav obj and their Vector2i
+var objectsPositions: Array = [] 				#array, to sav obj and their Vector2i
 
 #Властивості поля
 var fieldGenerationType: int = 0
