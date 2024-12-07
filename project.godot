@@ -22,11 +22,17 @@ Global="*res://scripts/global.gd"
 
 [display]
 
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 mouse_cursor/handheld/orientation=0
 
 [dotnet]
 
 project/assembly_name="TankGo"
+
+[editor]
+
+script/templates_search_path="res://addons/templates"
 
 [filesystem]
 

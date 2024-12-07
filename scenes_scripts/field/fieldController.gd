@@ -47,26 +47,30 @@ func activateReplays():
 		timer.start()
 
 #region PrepareField
-
 func prepareField(mapReplay: MapReplay):			#Викликати із Main для завантаження поля, реплеїв
 	$EndGameTimer.wait_time = mapReplay.gameTime
+	for n in _pathToField.get_children():
+		if n.is_in_group('Wall') || n.is_in_group("testCircle1"):
+			n.queue_free()
+	makeFieldWalls(mapReplay.mapInfo)
+	prepareObjects(mapReplay.mapInfo, mapReplay.playerDictionary)
+	
 	#for tank in get_tree().get_nodes_in_group("Tank"):							#Поки що ніц не робить
 		#tank.prepareTank()
-	prepareFieldWalls(mapReplay.mapInfo)
 
 #region PrepareObjects
-func prepareObjects():
-	
-	pass
+func prepareObjects(mapInfo: MapInfo, playersInfo: Dictionary):
+	var objectsPostions: Array = mapInfo.objectsPositions
+	for objPos in  objectsPostions:
+		var objId: int = objPos[2]
+		var newCircle = circleSprite.duplicate()
+		_pathToField.add_child(newCircle)
+		newCircle.position = Vector2(50 + objPos[1] * 100, 50 + objPos[0] * 100)
+		newCircle.name = "circleSprite" + str(objId)
+		var playerInfo = playersInfo.get(objId)
+		newCircle.modulate = Color(playerInfo.color)
 #endregion
 #region Prepare Walls
-
-func prepareFieldWalls(mapInfo: MapInfo):
-	for n in _pathToField.get_children():
-		if n.is_in_group('Wall'):
-			n.queue_free()
-	makeFieldWalls(mapInfo)
-
 func makeFieldWalls(mapInfo: MapInfo):
 	var mapSizeX: int = mapInfo.sizeX
 	var mapSizeY: int = mapInfo.sizeY
@@ -146,6 +150,17 @@ func _input(_event: InputEvent) -> void:
 		var result: MapInfo = await Global.webService.send_map_request(request)
 		if (result != null):
 			print(result.toJSON())
-			prepareFieldWalls(result)
+			var fakeMapReplay = makeFakeMapReplay(result)
+			prepareField(fakeMapReplay)
 		else:
 			print("null  responce")
+
+func makeFakeMapReplay(mapInfo: MapInfo) -> MapReplay:
+	var result = MapReplay.new()
+	result.mapInfo = mapInfo
+	var playerInfo0: PlayerInfo = PlayerInfo.new(0, "#56d333", "Player0")
+	var playerInfo1: PlayerInfo = PlayerInfo.new(1, "#0000ff", "Player0")
+	var playerInfo2: PlayerInfo = PlayerInfo.new(2, "#eb4034", "Player0")
+	var playersInfoFake: Dictionary = {0: playerInfo0, 1: playerInfo1, 2:playerInfo2}
+	result.playerDictionary = playersInfoFake
+	return result
