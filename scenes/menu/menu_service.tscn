@@ -1,0 +1,604 @@
+[gd_scene load_steps=11 format=3 uid="uid://cf8q0hect6psa"]
+
+[ext_resource type="Script" path="res://scenes_scripts/menu/menu_service.gd" id="1_76agj"]
+[ext_resource type="Script" path="res://scenes_scripts/menu/MainMenuService.gd" id="2_0fmgp"]
+[ext_resource type="Script" path="res://scenes_scripts/Interface/LoginMenu.gd" id="2_allxp"]
+[ext_resource type="Theme" uid="uid://hijfoh1qr26t" path="res://textures/theme/mainScene.tres" id="2_l20im"]
+[ext_resource type="Script" path="res://scenes_scripts/menu/MultiplayerMenu.gd" id="3_444l0"]
+[ext_resource type="Script" path="res://test/colorPickerEditor/colorPicketButton.gd" id="3_qpxha"]
+[ext_resource type="Script" path="res://scenes_scripts/Interface/MultiplayerMainScreen.gd" id="4_pc2tv"]
+[ext_resource type="Texture2D" uid="uid://du6718qkkw12g" path="res://icon.svg" id="6_fon7l"]
+
+[sub_resource type="Gradient" id="Gradient_k02xh"]
+offsets = PackedFloat32Array(0, 0.986755, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.874172, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y401i"]
+gradient = SubResource("Gradient_k02xh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="InterfaceService" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_76agj")
+
+[node name="GameInfoContainer" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameInfoContainer"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_right = -3.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="GameInfoContainerNotSure" type="AspectRatioContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.757
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0640259
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameInfoContainerNotSure"]
+modulate = Color(1, 0.317647, 1, 1)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_y401i")
+
+[node name="MainMenuService" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_0fmgp")
+
+[node name="MainMenu" type="VBoxContainer" parent="MainMenuService"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -136.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="SoloPlayerButton" type="Button" parent="MainMenuService/MainMenu"]
+layout_mode = 2
+disabled = true
+text = "Solo"
+
+[node name="MultiplayerButton" type="Button" parent="MainMenuService/MainMenu"]
+layout_mode = 2
+text = "Multiplayer"
+
+[node name="OptionsButton" type="Button" parent="MainMenuService/MainMenu"]
+layout_mode = 2
+disabled = true
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="MainMenuService/MainMenu"]
+layout_mode = 2
+text = "Exit Windows"
+
+[node name="MultiplayerMenu" type="Control" parent="MainMenuService"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_444l0")
+
+[node name="TabContainer" type="TabContainer" parent="MainMenuService/MultiplayerMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabBar" type="TabBar" parent="MainMenuService/MultiplayerMenu/TabContainer"]
+layout_mode = 2
+
+[node name="+" type="TabBar" parent="MainMenuService/MultiplayerMenu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MultiplayerMainScreen" type="PanelContainer" parent="MainMenuService/MultiplayerMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_pc2tv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginLeft" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="SearchFilters" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MyProfileButton" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters"]
+layout_mode = 2
+text = "My Profile"
+
+[node name="Margin" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters"]
+layout_mode = 2
+text = "Search filters:"
+
+[node name="Players" type="CheckButton" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters"]
+layout_mode = 2
+text = "Players"
+
+[node name="SearchNameEdit" type="LineEdit" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters"]
+visible = false
+layout_mode = 2
+placeholder_text = "Search by name"
+
+[node name="MyGamesFilter" type="CheckBox" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters"]
+layout_mode = 2
+text = "My games"
+
+[node name="InLobbyStatusFilter" type="CheckBox" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters"]
+layout_mode = 2
+text = "In lobby status"
+
+[node name="SendSearchButton" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters"]
+layout_mode = 2
+text = "Search"
+
+[node name="Margin2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="CreateLobbyButton" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters"]
+layout_mode = 2
+text = "Create new Lobby"
+
+[node name="Margin3" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HideFoundResults" type="CheckButton" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters"]
+layout_mode = 2
+text = "Hide found results"
+
+[node name="VSeparator" type="VSeparator" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="FoundGamesColumn" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn"]
+layout_mode = 2
+text = "Found:"
+
+[node name="HSeparator" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="GameListContainer" type="ScrollContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="GamesList" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Game1" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game2" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game3" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game4" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game5" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Gameshhghnggggggggggg"
+text_overrun_behavior = 3
+
+[node name="Game6" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game7" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game8" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game9" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game10" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game11" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game12" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game13" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game14" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game15" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game16" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game17" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game18" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game19" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game20" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game21" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game22" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="Game23" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/FoundGamesColumn/GameListContainer/GamesList"]
+layout_mode = 2
+text = "One of Games"
+
+[node name="MarginBeforeLobbyInfo" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="GameInfoContainer" type="PanelContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer"]
+layout_mode = 2
+
+[node name="LobbyNameLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_l20im")
+theme_type_variation = &"HeaderLarge"
+text = "Lobby name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="LobbyPlayersContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+layout_mode = 2
+text = "Lobby Players: "
+
+[node name="LobbyPlayersList" type="ScrollContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OneOfPlayerName" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
+self_modulate = Color(1, 1, 0.196078, 1)
+layout_mode = 2
+text = "LobbyOwnerName"
+icon = ExtResource("6_fon7l")
+expand_icon = true
+
+[node name="OneOfPlayerName2" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
+layout_mode = 2
+text = "OneOfThePlayersName"
+
+[node name="OneOfPlayerName3" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
+layout_mode = 2
+text = "OneOfThePlayersName"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Lobby settings:"
+
+[node name="MarginContainer4" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PasswordField" type="LineEdit" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+placeholder_text = "Lobby password"
+
+[node name="JoinButton" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Join"
+
+[node name="PlayerProfile" type="PanelContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="PlayerName" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/PlayerProfile"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_l20im")
+text = "PlayerName"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionsWithPlayer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/PlayerProfile"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="PlayerGamesButton" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/PlayerProfile/ActionsWithPlayer"]
+layout_mode = 2
+text = "His games"
+
+[node name="GridContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/PlayerProfile"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="ColorLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/PlayerProfile/GridContainer"]
+layout_mode = 2
+text = "Main color: "
+
+[node name="MarginAfterLobbyInfo" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="LoginMenu" type="Control" parent="MainMenuService"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_allxp")
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuService/LoginMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.5
+offset_top = -194.0
+offset_right = 191.5
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_l20im")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/LoginMenu/PanelContainer"]
+layout_mode = 2
+
+[node name="LoginContainer" type="HBoxContainer" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelLogin" type="Label" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer/LoginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Login"
+
+[node name="TextEditLogin" type="LineEdit" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer/LoginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "string"
+
+[node name="PasswordContainer" type="HBoxContainer" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelPassword" type="Label" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer/PasswordContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Password"
+
+[node name="TextEditPassword" type="LineEdit" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer/PasswordContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "string"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="UsernameContainer" type="HBoxContainer" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelUsername" type="Label" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer/UsernameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Username"
+
+[node name="TextEditUsername" type="LineEdit" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer/UsernameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "string"
+
+[node name="ColorPickerContainer" type="HBoxContainer" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelColor" type="Label" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer/ColorPickerContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Color
+"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer/ColorPickerContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Your default color"
+color = Color(1, 1, 1, 1)
+edit_alpha = false
+script = ExtResource("3_qpxha")
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenuService/LoginMenu/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="AlreadyHaveAccountCheckBox" type="CheckBox" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+focus_mode = 0
+text = "  I already have an account"
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubmitButton" type="Button" parent="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Submit"
+
+[connection signal="pressed" from="MainMenuService/MainMenu/MultiplayerButton" to="MainMenuService" method="_on_multiplayer_button_pressed"]
+[connection signal="pressed" from="MainMenuService/MainMenu/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters/MyProfileButton" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_my_profile_button_pressed"]
+[connection signal="toggled" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters/Players" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_search_players_toggled"]
+[connection signal="pressed" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters/SendSearchButton" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_send_search_button_pressed"]
+[connection signal="pressed" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters/CreateLobbyButton" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_create_lobby_button_pressed"]
+[connection signal="toggled" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/SearchFilters/HideFoundResults" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_hide_found_results_toggled"]
+[connection signal="pressed" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer/JoinButton" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_join_button_pressed"]
+[connection signal="toggled" from="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2/AlreadyHaveAccountCheckBox" to="MainMenuService/LoginMenu" method="_on_check_box_toggled"]
+[connection signal="pressed" from="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2/HBoxContainer/BackButton" to="MainMenuService" method="_on_login_back_button_pressed"]
+[connection signal="pressed" from="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2/HBoxContainer/SubmitButton" to="MainMenuService/LoginMenu" method="_on_submit"]
