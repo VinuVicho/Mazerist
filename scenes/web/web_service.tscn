@@ -1,20 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2qghhwseeqyx"]
+[gd_scene load_steps=3 format=3 uid="uid://d2qghhwseeqyx"]
 
 [ext_resource type="Script" path="res://scenes_scripts/web/web_service.gd" id="1_ckik5"]
-[ext_resource type="Script" path="res://scenes_scripts/web/MapRequestHTTP.gd" id="2_y3wxt"]
-[ext_resource type="Script" path="res://scenes_scripts/web/Requests/SimpleHTTPRequest.gd" id="3_l7iqw"]
+[ext_resource type="Script" path="res://scenes_scripts/web/SimpleHTTPRequest.gd" id="2_nbbk0"]
 
 [node name="WebService" type="Node"]
 script = ExtResource("1_ckik5")
 
-[node name="MapRequestHTTP" type="HTTPRequest" parent="."]
-use_threads = true
-script = ExtResource("2_y3wxt")
-
 [node name="SimpleHTTPRequest" type="HTTPRequest" parent="."]
 use_threads = true
-script = ExtResource("3_l7iqw")
-
-[node name="HTTPRequestWithJWT" type="HTTPRequest" parent="."]
-use_threads = true
-script = ExtResource("3_l7iqw")
+script = ExtResource("2_nbbk0")

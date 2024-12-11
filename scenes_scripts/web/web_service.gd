@@ -20,7 +20,7 @@ func getAllLobbies() -> Array[LobbyDTO]:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toListOfObjects(responce.body_as_json())
-	printErrorResponce("Getting all lobbies failed: " + str(responce.status))
+	Logger.log_error("Getting all lobbies failed: " + str(responce.status))
 	return []
 
 func getMyLobbies() -> Array[LobbyDTO]:
@@ -28,7 +28,7 @@ func getMyLobbies() -> Array[LobbyDTO]:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toListOfObjects(responce.body_as_json())
-	printErrorResponce("Getting my lobbies failed: " + str(responce.status))
+	Logger.log_error("Getting my lobbies failed: " + str(responce.status))
 	return []
 
 func getLobby(lobbyId: int) -> LobbyDTO:
@@ -36,7 +36,7 @@ func getLobby(lobbyId: int) -> LobbyDTO:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
-	printErrorResponce("Getting my lobbies failed: " + str(responce.status))
+	Logger.log_error("Getting my lobbies failed: " + str(responce.status))
 	return
 
 func createLobby(lobbyCreateRequest: LobbyRequest) -> LobbyDTO:
@@ -44,7 +44,7 @@ func createLobby(lobbyCreateRequest: LobbyRequest) -> LobbyDTO:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, lobbyCreateRequest.to_string())
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
-	printErrorResponce("Getting my lobbies failed: " + str(responce.status))
+	Logger.log_error("Getting my lobbies failed: " + str(responce.status))
 	return
 
 func updateLobby(lobbyUpdateRequest: LobbyRequest) -> LobbyDTO:
@@ -52,7 +52,7 @@ func updateLobby(lobbyUpdateRequest: LobbyRequest) -> LobbyDTO:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, lobbyUpdateRequest.to_string())
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
-	printErrorResponce("Updating lobby " + str(lobbyUpdateRequest.lobbyId) + " failed: " + str(responce.status))
+	Logger.log_error("Updating lobby " + str(lobbyUpdateRequest.lobbyId) + " failed: " + str(responce.status))
 	return
 
 func deleteLobby(lobbyId: int) -> bool:
@@ -60,7 +60,7 @@ func deleteLobby(lobbyId: int) -> bool:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_DELETE)
 	if responce.success() && !responce.status_err():
 		return true
-	printErrorResponce("Deleting lobby " + str(lobbyId) + " failed: " + str(responce.status))
+	Logger.log_error("Deleting lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return false
 
 func joinLobby(lobbyJoinRequest: LobbyRequest) -> LobbyDTO:				#Maybe make another request
@@ -68,7 +68,7 @@ func joinLobby(lobbyJoinRequest: LobbyRequest) -> LobbyDTO:				#Maybe make anoth
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
-	printErrorResponce("Joining lobby " + str(lobbyJoinRequest.lobbyId) + " failed: " + str(responce.status))
+	Logger.log_error("Joining lobby " + str(lobbyJoinRequest.lobbyId) + " failed: " + str(responce.status))
 	return 
 
 #region lobbyActions
@@ -78,7 +78,7 @@ func setReadyInLobby(lobbyId: int, isReady: bool) -> LobbyDTO:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
-	printErrorResponce("Setting readiness in lobby " + str(lobbyId) + " failed: " + str(responce.status))
+	Logger.log_error("Setting readiness in lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return
 
 func kickPlayerOutOfLobby(lobbyId: int, playerToRemoveId: int) -> LobbyDTO:
@@ -89,7 +89,7 @@ func kickPlayerOutOfLobby(lobbyId: int, playerToRemoveId: int) -> LobbyDTO:
 		if respBody != null:
 			return LobbyDTO.toObject(respBody)
 		return
-	printErrorResponce("Kicking player out of lobby " + str(lobbyId) + " failed: " + str(responce.status))
+	Logger.log_error("Kicking player out of lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return
 
 func invitePlayerToLobby(lobbyId: int, playerToInviteId: int) -> LobbyDTO:			#WARNING not works currently
@@ -97,7 +97,7 @@ func invitePlayerToLobby(lobbyId: int, playerToInviteId: int) -> LobbyDTO:			#WA
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
-	printErrorResponce("Inviting player to lobby " + str(lobbyId) + " failed: " + str(responce.status))
+	Logger.log_error("Inviting player to lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return
 
 func changeColorInLobby(lobbyId: int, color: String) -> LobbyDTO:
@@ -105,7 +105,7 @@ func changeColorInLobby(lobbyId: int, color: String) -> LobbyDTO:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
-	printErrorResponce("Changing color in lobby " + str(lobbyId) + " failed: " + str(responce.status))
+	Logger.log_error("Changing color in lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return
 
 func switchTeamsInLobby(lobbyId: int, teamId: int) -> LobbyDTO:
@@ -113,7 +113,7 @@ func switchTeamsInLobby(lobbyId: int, teamId: int) -> LobbyDTO:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
-	printErrorResponce("Changing color in lobby " + str(lobbyId) + " failed: " + str(responce.status))
+	Logger.log_error("Changing color in lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return
 
 #endregion
@@ -127,7 +127,7 @@ func getPlayerProfile(playerId: int) -> PlayerDTO:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return PlayerDTO.toObject(responce.body_as_json())
-	printErrorResponce("Getting player " + str(playerId) + " failed: " + str(responce.status))
+	Logger.log_error("Getting player " + str(playerId) + " failed: " + str(responce.status))
 	return
 
 func getMyProfile() -> PlayerDTO:
@@ -135,7 +135,7 @@ func getMyProfile() -> PlayerDTO:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return PlayerDTO.toObject(responce.body_as_json())
-	printErrorResponce("Getting my profile failed: " + str(responce.status))
+	Logger.log_error("Getting my profile failed: " + str(responce.status))
 	return
 
 func getAllPlayers() -> Array[PlayerDTO]:
@@ -143,7 +143,7 @@ func getAllPlayers() -> Array[PlayerDTO]:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return PlayerDTO.toListOfObjects(responce.body_as_json())
-	printErrorResponce("Getting all okayers failed: " + str(responce.status))
+	Logger.log_error("Getting all players failed: " + str(responce.status))
 	return []
 
 func updatePlayer(playerUpdateRequest: PlayerUpdateRequest) -> PlayerDTO:		#WARNING: not implemented
@@ -151,7 +151,7 @@ func updatePlayer(playerUpdateRequest: PlayerUpdateRequest) -> PlayerDTO:		#WARN
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, playerUpdateRequest.to_string())
 	if responce.success() && !responce.status_err():
 		return PlayerDTO.toObject(responce.body_as_json())
-	printErrorResponce("Updating my playerInfo failed: " + str(responce.status))
+	Logger.log_error("Updating my playerInfo failed: " + str(responce.status))
 	return
 
 #endregion
@@ -163,7 +163,7 @@ func register_player(playerCreateRequest: PlayerCreateRequest) -> PlayerDTO:
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, playerCreateRequest.to_string())
 	if responce.success() && !responce.status_err():
 		return PlayerDTO.toObject(responce.body_as_json())
-	printErrorResponce("there was an error registering player: " + str(responce.status) + playerCreateRequest.to_string())
+	Logger.log_error("there was an error registering player: " + str(responce.status) + playerCreateRequest.to_string())
 	return
 
 func login_player(playerLoginRequest: PlayerLoginRequest) -> bool:
@@ -173,7 +173,7 @@ func login_player(playerLoginRequest: PlayerLoginRequest) -> bool:
 		addAuthorizationBearer(responce.body_as_string())
 		authentinticated = true
 		return true
-	printErrorResponce("Auth was unsuccessful " + str(responce.status))
+	Logger.log_error("Auth was unsuccessful " + str(responce.status))
 	return false
 
 #endregion
@@ -183,10 +183,10 @@ func login_player(playerLoginRequest: PlayerLoginRequest) -> bool:
 func send_map_request(request: FieldRequestForGen) -> MapInfo:
 	var requestBody = JSON.stringify(request.toJSON());
 	var responce: HTTPResult = await send_simle_httpRequest(serverUrl + "generate", HTTPClient.METHOD_POST, requestBody)
-	print(responce.status)
+	Logger.log(responce.status)
 	if responce.success() && !responce.status_err():
 		return MapInfo.toObject(responce.body_as_json())
-	printErrorResponce("Error, bad responce" + str(responce.status))
+	Logger.log_error("Error, bad responce" + str(responce.status))
 	return 
 
 #region Helper methods
@@ -197,9 +197,6 @@ func send_map_request(request: FieldRequestForGen) -> MapInfo:
 	#playerLoginRequest.login = "string"
 	#playerLoginRequest.password = "string"
 	#await login_player(playerLoginRequest)
-
-func printErrorResponce(message) -> void:
-	print_rich("[color=yellow]Request was failed: " + str(message) + "[/color]")
 
 static func print_something() -> String:
 	return "WebService print"
@@ -215,18 +212,22 @@ func addAuthorizationBearer(JWToken: String):
 
 #endregion
 
+			#Probably remove logs here before release
 func send_simle_httpRequest(url: String, method := HTTPClient.Method.METHOD_GET, request_data := ""):
+	var time_before = Time.get_ticks_msec()
+	Logger.log_with_color("Sending request (" + str(time_before) + "): " + url + " " + request_data, "GREEN_YELLOW")
 	var thisHttpRequest = simpleHttpRequest.duplicate()
 	add_child(thisHttpRequest)
 	var resp: HTTPResult = await thisHttpRequest.async_request(url, headers, method, request_data)
+	Logger.log_with_color("Recieved request (" + str(time_before) + ") in " + str(Time.get_ticks_msec() - time_before) + "ms: " + resp.body_as_string(), "GREEN_YELLOW")
 	thisHttpRequest.queue_free()
 	if resp.status_err():
 		#TODO: error handler
 		match resp.status:
 			401:
 				authentinticated = false
-				printErrorResponce("Auth error, log in again")
+				Logger.log_warning("Auth error, log in again")
 			500:
-				printErrorResponce("Nah, server down")
+				Logger.log_error("Nah, server down")
 		pass
 	return resp

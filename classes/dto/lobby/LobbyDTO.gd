@@ -3,6 +3,7 @@ class_name LobbyDTO
 var lobbyId: int
 var lobbyName: String
 var lobbyOwnerId: int
+var hasPassword: bool
 var players: Array[PlayerDTO]
 var lobbySettings: FieldRequest
 
@@ -14,6 +15,7 @@ func toJSON() -> Dictionary:
 		"lobbyId": lobbyId,
 		"lobbyName": lobbyName,
 		"lobbyOwnerId": lobbyOwnerId,
+		"hasPassword": hasPassword,
 	}
 	
 	var playersList: Array[Dictionary] = []
@@ -31,6 +33,7 @@ static func toObject(json: Dictionary) -> LobbyDTO:
 	result.lobbyId = json["lobbyId"]
 	result.lobbyName = json["lobbyName"]
 	result.lobbyOwnerId = json["lobbyOwnerId"]
+	result.hasPassword = json["hasPassword"]
 	
 	result.players = []
 	var playerJSONs = json["players"]
