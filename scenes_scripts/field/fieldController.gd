@@ -31,7 +31,7 @@ func _ready():
 func receivePlayerRecordings(actions: Array[ActionInfo]):
 	var new_tank = playerTank.duplicate()
 	new_tank.name = "Duplicate"
-	new_tank.get_node("TankController").set_script(preload("res://scenes_scripts/new_script.gd"))
+	new_tank.get_node("TankController").set_script(preload("res://scripts/repeater_control/actionsRepeaterControl.gd"))
 	add_child(new_tank)
 	new_tank.modulate = Color(0,1,0,1)
 	new_tank.is_alive = true

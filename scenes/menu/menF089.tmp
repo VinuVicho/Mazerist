@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cf8q0hect6psa"]
+[gd_scene load_steps=11 format=3 uid="uid://cf8q0hect6psa"]
 
 [ext_resource type="Script" path="res://scenes_scripts/menu/menu_service.gd" id="1_76agj"]
 [ext_resource type="Script" path="res://scenes_scripts/menu/MainMenuService.gd" id="2_0fmgp"]
@@ -8,7 +8,16 @@
 [ext_resource type="Script" path="res://test/colorPickerEditor/colorPicketButton.gd" id="3_qpxha"]
 [ext_resource type="Script" path="res://scenes_scripts/Interface/MultiplayerMainScreen.gd" id="4_pc2tv"]
 [ext_resource type="Texture2D" uid="uid://du6718qkkw12g" path="res://icon.svg" id="6_fon7l"]
-[ext_resource type="Script" path="res://scenes_scripts/Interface/ExceptionDisplay.gd" id="9_0km6m"]
+
+[sub_resource type="Gradient" id="Gradient_k02xh"]
+offsets = PackedFloat32Array(0, 0.986755, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.874172, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y401i"]
+gradient = SubResource("Gradient_k02xh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [node name="InterfaceService" type="Control"]
 layout_mode = 3
@@ -18,6 +27,44 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_76agj")
+
+[node name="GameInfoContainer" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameInfoContainer"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_right = -3.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="GameInfoContainerNotSure" type="AspectRatioContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.757
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0640259
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameInfoContainerNotSure"]
+modulate = Color(1, 0.317647, 1, 1)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_y401i")
 
 [node name="MainMenuService" type="Control" parent="."]
 layout_mode = 1
@@ -129,7 +176,6 @@ text = "Players"
 [node name="SearchNameEdit" type="LineEdit" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
 layout_mode = 2
 placeholder_text = "Search by name"
-editable = false
 
 [node name="MyGamesFilter" type="CheckBox" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
 layout_mode = 2
@@ -370,6 +416,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
 [node name="GameInfoContainer" type="PanelContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -386,13 +433,8 @@ text = "Lobby name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
@@ -400,21 +442,25 @@ layout_mode = 2
 
 [node name="LobbyPlayersContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 
 [node name="Label" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
 layout_mode = 2
-text = "Players: "
+text = "Lobby Players: "
 
 [node name="LobbyPlayersList" type="ScrollContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
-size_flags_vertical = 3
 follow_focus = true
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="OneOfPlayerName" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
 self_modulate = Color(1, 1, 0.196078, 1)
@@ -431,58 +477,20 @@ text = "OneOfThePlayersName"
 layout_mode = 2
 text = "OneOfThePlayersName"
 
-[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
-layout_mode = 2
-text = "Spectators: "
-
-[node name="LobbySpectatorsList" type="ScrollContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-follow_focus = true
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="OneOfPlayerName" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
-self_modulate = Color(1, 1, 0.196078, 1)
-layout_mode = 2
-text = "LobbyOwnerName"
-icon = ExtResource("6_fon7l")
-expand_icon = true
-
-[node name="OneOfPlayerName2" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
-layout_mode = 2
-text = "OneOfThePlayersName"
-
-[node name="OneOfPlayerName3" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
-layout_mode = 2
-text = "OneOfThePlayersName"
-
 [node name="MarginContainer3" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="LobbySettingsContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
 
-[node name="LobbySettingsHeader" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettingsContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme = ExtResource("2_l20im")
-theme_type_variation = &"HeaderSmall"
+
+[node name="Label" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
 text = "Lobby settings:"
-
-[node name="LobbySettings" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettingsContainer"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-autowrap_mode = 1
 
 [node name="MarginContainer4" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
@@ -866,53 +874,6 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 text = "Submit"
 
-[node name="ExceptionDisplayer" type="Control" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
-script = ExtResource("9_0km6m")
-
-[node name="Timer" type="Timer" parent="ExceptionDisplayer"]
-wait_time = 5.0
-
-[node name="PanelContainer" type="PanelContainer" parent="ExceptionDisplayer"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -79.5
-offset_right = 79.5
-offset_bottom = 100.0
-grow_horizontal = 2
-
-[node name="HintToDisplayLogs" type="Label" parent="ExceptionDisplayer/PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-size_flags_stretch_ratio = 2.0
-text = "Press F9 to view logs"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ExceptionDisplayer/PanelContainer"]
-layout_mode = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="ExceptionDisplayer/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-
-[node name="ErrorDisplayMessage" type="Label" parent="ExceptionDisplayer/PanelContainer/HBoxContainer"]
-self_modulate = Color(0.886275, 0, 0, 1)
-layout_mode = 2
-vertical_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="ExceptionDisplayer/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-
 [connection signal="pressed" from="MainMenuService/MainMenu/MultiplayerButton" to="MainMenuService" method="_on_multiplayer_button_pressed"]
 [connection signal="pressed" from="MainMenuService/MainMenu/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu/MyProfileButton" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_my_profile_button_pressed"]
@@ -926,4 +887,3 @@ layout_mode = 2
 [connection signal="toggled" from="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2/AlreadyHaveAccountCheckBox" to="MainMenuService/LoginMenu" method="_on_check_box_toggled"]
 [connection signal="pressed" from="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2/HBoxContainer/BackButton" to="MainMenuService" method="_on_login_back_button_pressed"]
 [connection signal="pressed" from="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2/HBoxContainer/SubmitButton" to="MainMenuService/LoginMenu" method="_on_submit"]
-[connection signal="timeout" from="ExceptionDisplayer/Timer" to="ExceptionDisplayer" method="_on_timer_timeout"]

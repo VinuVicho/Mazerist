@@ -1,6 +1,11 @@
 extends Control
 
-
+func _ready() -> void:
+	#TODO: prepare main screen
+	$MainMenu.visible = true
+	$MultiplayerMenu.visible = false
+	$LoginMenu.visible = false
+	
 
 func _on_login_back_button_pressed() -> void:
 	$LoginMenu.visible = false
@@ -16,3 +21,9 @@ func _on_multiplayer_button_pressed() -> void:
 		return
 	$LoginMenu.visible = true
 
+
+
+func _on_back_to_main_menu_pressed() -> void:
+	$MultiplayerMenu.visible = false
+	$MainMenu.visible = true
+	pass # Replace with function body.

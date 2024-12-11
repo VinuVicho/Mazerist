@@ -31,4 +31,4 @@ func perform_CreateAccountRequest():
 	createRequest.username = $PanelContainer/VBoxContainer/UsernameContainer/TextEditUsername.text
 	createRequest.color = $PanelContainer/VBoxContainer/ColorPickerContainer/ColorPickerButton.color.to_html(false)
 	var result: PlayerDTO = await Global.webService.register_player(createRequest)
-	#TODO
+	#TODO: show playerInfo and make auto login
