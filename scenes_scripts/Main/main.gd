@@ -6,7 +6,7 @@ extends Node
 """
 func _ready() -> void:
 	Global.services["WebService"] = $WebService									#Задаємо глобальному скрипту веб сервіс
-	Global.webService = $WebService
+	#Global.webService = $WebService 			#moved to _init in WebService
 	Global.services["FieldService"] = $FieldController
 	print("Print of services from main class:")
 	print(Global.services)														#Після цього всі інші класи можуть почати брати сервіси

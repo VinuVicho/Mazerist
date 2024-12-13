@@ -21,7 +21,7 @@ func perform_LoginRequest():
 	if isSuccessfull:
 		get_parent()._on_multiplayer_button_pressed()
 		return
-	print("Login NOT successful")
+	Logger.log_error("Login not successful")
 	
 
 func perform_CreateAccountRequest():

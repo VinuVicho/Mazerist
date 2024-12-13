@@ -5,6 +5,9 @@ const serverUrl := "https://localhost:7080/"
 const headers: PackedStringArray = ["Content-Type: application/json"]
 var authentinticated: bool = false 
 
+func _init() -> void:
+	Global.webService = self
+
 func _ready() -> void:
 	simpleHttpRequest = $SimpleHTTPRequest
 	
@@ -16,7 +19,7 @@ func _ready() -> void:
 #region Lobby
 
 func getAllLobbies() -> Array[LobbyDTO]:
-	const url = serverUrl + "Lobby/all"
+	const url = "Lobby/all"
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toListOfObjects(responce.body_as_json())
@@ -24,7 +27,7 @@ func getAllLobbies() -> Array[LobbyDTO]:
 	return []
 
 func getMyLobbies() -> Array[LobbyDTO]:
-	const url = serverUrl + "Lobby/my"
+	const url = "Lobby/my"
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toListOfObjects(responce.body_as_json())
@@ -32,7 +35,7 @@ func getMyLobbies() -> Array[LobbyDTO]:
 	return []
 
 func getLobby(lobbyId: int) -> LobbyDTO:
-	var url = serverUrl + "Lobby/" + str(lobbyId)
+	var url = "Lobby/" + str(lobbyId)
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
@@ -40,7 +43,7 @@ func getLobby(lobbyId: int) -> LobbyDTO:
 	return
 
 func createLobby(lobbyCreateRequest: LobbyRequest) -> LobbyDTO:
-	const url = serverUrl + "Lobby/create"
+	const url = "Lobby/create"
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, lobbyCreateRequest.to_string())
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
@@ -48,7 +51,7 @@ func createLobby(lobbyCreateRequest: LobbyRequest) -> LobbyDTO:
 	return
 
 func updateLobby(lobbyUpdateRequest: LobbyRequest) -> LobbyDTO:
-	const url = serverUrl + "Lobby/update"
+	const url = "Lobby/update"
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, lobbyUpdateRequest.to_string())
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
@@ -56,7 +59,7 @@ func updateLobby(lobbyUpdateRequest: LobbyRequest) -> LobbyDTO:
 	return
 
 func deleteLobby(lobbyId: int) -> bool:
-	var url = serverUrl + "Lobby/" + str(lobbyId)
+	var url = "Lobby/" + str(lobbyId)
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_DELETE)
 	if responce.success() && !responce.status_err():
 		return true
@@ -64,8 +67,8 @@ func deleteLobby(lobbyId: int) -> bool:
 	return false
 
 func joinLobby(lobbyJoinRequest: LobbyRequest) -> LobbyDTO:				#Maybe make another request
-	const url = serverUrl + "Lobby/join"
-	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST)
+	const url = "Lobby/join"
+	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, lobbyJoinRequest.to_string())
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
 	Logger.log_error("Joining lobby " + str(lobbyJoinRequest.lobbyId) + " failed: " + str(responce.status))
@@ -74,7 +77,7 @@ func joinLobby(lobbyJoinRequest: LobbyRequest) -> LobbyDTO:				#Maybe make anoth
 #region lobbyActions
 
 func setReadyInLobby(lobbyId: int, isReady: bool) -> LobbyDTO:
-	var url = serverUrl + "Lobby/" + str(lobbyId) + "/ready/" + str(isReady)
+	var url = "Lobby/" + str(lobbyId) + "/ready/" + str(isReady)
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
@@ -82,7 +85,7 @@ func setReadyInLobby(lobbyId: int, isReady: bool) -> LobbyDTO:
 	return
 
 func kickPlayerOutOfLobby(lobbyId: int, playerToRemoveId: int) -> LobbyDTO:
-	var url = serverUrl + "Lobby/" + str(lobbyId) + "/kick/" + str(playerToRemoveId)
+	var url = "Lobby/" + str(lobbyId) + "/kick/" + str(playerToRemoveId)
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		var respBody = responce.body_as_json()
@@ -93,7 +96,7 @@ func kickPlayerOutOfLobby(lobbyId: int, playerToRemoveId: int) -> LobbyDTO:
 	return
 
 func invitePlayerToLobby(lobbyId: int, playerToInviteId: int) -> LobbyDTO:			#WARNING not works currently
-	var url = serverUrl + "Lobby/" + str(lobbyId) + "/invite/" + str(playerToInviteId)
+	var url = "Lobby/" + str(lobbyId) + "/invite/" + str(playerToInviteId)
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
@@ -101,7 +104,7 @@ func invitePlayerToLobby(lobbyId: int, playerToInviteId: int) -> LobbyDTO:			#WA
 	return
 
 func changeColorInLobby(lobbyId: int, color: String) -> LobbyDTO:
-	var url = serverUrl + "Lobby/" + str(lobbyId) + "/color/" + color
+	var url = "Lobby/" + str(lobbyId) + "/color/" + color
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
@@ -109,7 +112,7 @@ func changeColorInLobby(lobbyId: int, color: String) -> LobbyDTO:
 	return
 
 func switchTeamsInLobby(lobbyId: int, teamId: int) -> LobbyDTO:
-	var url = serverUrl + "Lobby/" + str(lobbyId) + "/switchTeams/" + str(teamId)
+	var url = "Lobby/" + str(lobbyId) + "/switchTeams/" + str(teamId)
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
@@ -123,7 +126,7 @@ func switchTeamsInLobby(lobbyId: int, teamId: int) -> LobbyDTO:
 #region Player
 
 func getPlayerProfile(playerId: int) -> PlayerDTO:
-	var url = serverUrl + "player/" + str(playerId)
+	var url = "player/" + str(playerId)
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return PlayerDTO.toObject(responce.body_as_json())
@@ -131,7 +134,7 @@ func getPlayerProfile(playerId: int) -> PlayerDTO:
 	return
 
 func getMyProfile() -> PlayerDTO:
-	const url = serverUrl + "player/me"
+	const url = "player/me"
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return PlayerDTO.toObject(responce.body_as_json())
@@ -139,7 +142,7 @@ func getMyProfile() -> PlayerDTO:
 	return
 
 func getAllPlayers() -> Array[PlayerDTO]:
-	const url = serverUrl + "player/all"
+	const url = "player/all"
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return PlayerDTO.toListOfObjects(responce.body_as_json())
@@ -147,7 +150,7 @@ func getAllPlayers() -> Array[PlayerDTO]:
 	return []
 
 func updatePlayer(playerUpdateRequest: PlayerUpdateRequest) -> PlayerDTO:		#WARNING: not implemented
-	const url = serverUrl + "player/update"
+	const url = "player/update"
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, playerUpdateRequest.to_string())
 	if responce.success() && !responce.status_err():
 		return PlayerDTO.toObject(responce.body_as_json())
@@ -159,7 +162,7 @@ func updatePlayer(playerUpdateRequest: PlayerUpdateRequest) -> PlayerDTO:		#WARN
 #region Auth
 
 func register_player(playerCreateRequest: PlayerCreateRequest) -> PlayerDTO:
-	const url = serverUrl + "Auth/register"
+	const url = "Auth/register"
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, playerCreateRequest.to_string())
 	if responce.success() && !responce.status_err():
 		return PlayerDTO.toObject(responce.body_as_json())
@@ -167,7 +170,7 @@ func register_player(playerCreateRequest: PlayerCreateRequest) -> PlayerDTO:
 	return
 
 func login_player(playerLoginRequest: PlayerLoginRequest) -> bool:
-	const url = serverUrl + "Auth/login"
+	const url = "Auth/login"
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, playerLoginRequest.to_string())
 	if responce.success() && !responce.status_err():
 		addAuthorizationBearer(responce.body_as_string())
@@ -182,7 +185,7 @@ func login_player(playerLoginRequest: PlayerLoginRequest) -> bool:
 
 func send_map_request(request: FieldRequestForGen) -> MapInfo:
 	var requestBody = JSON.stringify(request.toJSON());
-	var responce: HTTPResult = await send_simle_httpRequest(serverUrl + "generate", HTTPClient.METHOD_POST, requestBody)
+	var responce: HTTPResult = await send_simle_httpRequest("generate", HTTPClient.METHOD_POST, requestBody)
 	Logger.log(responce.status)
 	if responce.success() && !responce.status_err():
 		return MapInfo.toObject(responce.body_as_json())
@@ -218,7 +221,8 @@ func send_simle_httpRequest(url: String, method := HTTPClient.Method.METHOD_GET,
 	Logger.log_with_color("Sending request (" + str(time_before) + "): " + url + " " + request_data, "GREEN_YELLOW")
 	var thisHttpRequest = simpleHttpRequest.duplicate()
 	add_child(thisHttpRequest)
-	var resp: HTTPResult = await thisHttpRequest.async_request(url, headers, method, request_data)
+	
+	var resp: HTTPResult = await thisHttpRequest.async_request(serverUrl + url, headers, method, request_data)
 	Logger.log_with_color("Recieved request (" + str(time_before) + ") in " + str(Time.get_ticks_msec() - time_before) + "ms: " + resp.body_as_string(), "GREEN_YELLOW")
 	thisHttpRequest.queue_free()
 	if resp.status_err():
@@ -226,7 +230,9 @@ func send_simle_httpRequest(url: String, method := HTTPClient.Method.METHOD_GET,
 		match resp.status:
 			401:
 				authentinticated = false
-				Logger.log_warning("Auth error, log in again")
+				Logger.log_error("Auth error, log in again")
+			404:
+				Logger.log_warning("Resource not found for " + url)
 			500:
 				Logger.log_error("Nah, server down")
 		pass

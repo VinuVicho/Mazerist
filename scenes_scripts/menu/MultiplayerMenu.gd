@@ -1,10 +1,8 @@
 extends Control
 
 
-
-
 func _on_createLobby_button_pressed() -> void:
-	var container := $MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer
+	var container := $TabContainer/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer
 	var lobbyRequest := LobbyRequest.new()
 	#TODO: make this via 'Acces as unique name', probably faster?
 	lobbyRequest.lobbyName = container.get_node("LobbyNameEdit").text
@@ -18,8 +16,9 @@ func _on_createLobby_button_pressed() -> void:
 	lobbyRequest.fieldRequest.wallsPercentage = container.get_node("FieldWallsPercentageSelector").value
 	lobbyRequest.fieldRequest.fieldGenerationType = container.get_node("FieldGenerationTypeSelector").selected
 	lobbyRequest.fieldRequest.playersPositionType = container.get_node("PlayersPositionTypeSelector").selected
-	print(lobbyRequest)
-	#TODO: send request
+	Logger.log_with_color(lobbyRequest, "ORANGE")
+	var createdLobby = await Global.webService.createLobby(lobbyRequest)
+	
 	#TODO: change view to Lobby
 
 

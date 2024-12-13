@@ -1,10 +1,12 @@
-extends Control
+class_name ErrorDisplayer extends Control
 
 var randomNumber = 1
 
+func _ready() -> void:
+	Global.errorDisplayer = self
+
 #		%ExceptionDisplayer.displayError("test Error")
 func displayError(message: String):
-	Logger.log("Error: " + message)
 	$PanelContainer/HBoxContainer/ErrorDisplayMessage.text = message
 	visible = true
 	$Timer.start()

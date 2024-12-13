@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://hijfoh1qr26t" path="res://textures/theme/mainScene.tres" id="2_l20im"]
 [ext_resource type="Script" path="res://scenes_scripts/menu/MultiplayerMenu.gd" id="3_444l0"]
 [ext_resource type="Script" path="res://test/colorPickerEditor/colorPicketButton.gd" id="3_qpxha"]
-[ext_resource type="Script" path="res://scenes_scripts/Interface/MultiplayerMainScreen.gd" id="4_pc2tv"]
+[ext_resource type="PackedScene" uid="uid://cd4jdybfpfk2" path="res://scenes/menu/multiplayer_main_screen.tscn" id="4_cklp3"]
 [ext_resource type="Texture2D" uid="uid://du6718qkkw12g" path="res://icon.svg" id="6_fon7l"]
 [ext_resource type="Script" path="res://scenes_scripts/Interface/ExceptionDisplay.gd" id="9_0km6m"]
 
@@ -67,6 +67,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_444l0")
 
+[node name="MultiplayerMainScreen" parent="MainMenuService/MultiplayerMenu" instance=ExtResource("4_cklp3")]
+layout_mode = 1
+
 [node name="TabContainer" type="TabContainer" parent="MainMenuService/MultiplayerMenu"]
 visible = false
 layout_mode = 1
@@ -76,528 +79,73 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TabBar" type="TabBar" parent="MainMenuService/MultiplayerMenu/TabContainer"]
+[node name="FullLobbyInfo" type="PanelContainer" parent="MainMenuService/MultiplayerMenu/TabContainer"]
 layout_mode = 2
 
-[node name="+" type="TabBar" parent="MainMenuService/MultiplayerMenu/TabContainer"]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo"]
 layout_mode = 2
 
-[node name="MultiplayerMainScreen" type="PanelContainer" parent="MainMenuService/MultiplayerMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_pc2tv")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginLeft" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-
-[node name="MultiplayerMenu" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="MyProfileButton" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-layout_mode = 2
-text = "My Profile"
-
-[node name="Margin" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-layout_mode = 2
-text = "Search filters:"
-
-[node name="SearchForPlayersCheck" type="CheckButton" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-layout_mode = 2
-text = "Players"
-
-[node name="SearchNameEdit" type="LineEdit" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-layout_mode = 2
-placeholder_text = "Search by name"
-editable = false
-
-[node name="MyGamesFilter" type="CheckBox" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-layout_mode = 2
-text = "My games"
-
-[node name="InLobbyStatusFilter" type="CheckBox" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-layout_mode = 2
-disabled = true
-text = "In lobby status"
-
-[node name="SendSearchButton" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-layout_mode = 2
-text = "Search"
-
-[node name="Margin2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="CreateLobbyButton" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-layout_mode = 2
-size_flags_vertical = 4
-text = "Create new Lobby"
-
-[node name="Margin3" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="HideFoundResults" type="CheckButton" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-layout_mode = 2
-text = "Hide found results"
-
-[node name="Margin4" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="BackToMainMenu" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu"]
-layout_mode = 2
-size_flags_vertical = 10
-text = "Back"
-
-[node name="VSeparator" type="VSeparator" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="ListColumn" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn"]
-layout_mode = 2
-text = "Found:"
-
-[node name="Margin" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="ButtonTemplate" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn"]
-editor_description = "qwe"
-visible = false
-layout_mode = 2
-text = "TemplateButton"
-text_overrun_behavior = 3
-
-[node name="ListContainer" type="ScrollContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn"]
-custom_minimum_size = Vector2(0, 400)
-layout_mode = 2
-size_flags_vertical = 3
-follow_focus = true
-horizontal_scroll_mode = 0
-
-[node name="List" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Game1" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game2" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game3" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game4" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game5" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Gameshhghnggggggggggg"
-text_overrun_behavior = 3
-
-[node name="Game6" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game7" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game8" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game9" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game10" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game11" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game12" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game13" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game14" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game15" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game16" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game24" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game25" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game26" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game27" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game28" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game29" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game30" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game31" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game32" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game33" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game34" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game35" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game36" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game37" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game38" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game39" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game17" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game18" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game19" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game20" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game21" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game22" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game23" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Margin2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/ListColumn"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="MarginBeforeLobbyInfo" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="GameInfoContainer" type="PanelContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
-[node name="LobbyNameLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_vertical = 0
 theme = ExtResource("2_l20im")
 theme_type_variation = &"HeaderLarge"
-text = "Lobby name"
+text = "LobbyName"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="LobbyPlayersContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
-layout_mode = 2
-text = "Players: "
-
-[node name="LobbyPlayersList" type="ScrollContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-follow_focus = true
-horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList"]
+[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="AnotherLobbyThings" type="PanelContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
 
-[node name="OneOfPlayerName" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
-self_modulate = Color(1, 1, 0.196078, 1)
-layout_mode = 2
-text = "LobbyOwnerName"
-icon = ExtResource("6_fon7l")
-expand_icon = true
-
-[node name="OneOfPlayerName2" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
-layout_mode = 2
-text = "OneOfThePlayersName"
-
-[node name="OneOfPlayerName3" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
-layout_mode = 2
-text = "OneOfThePlayersName"
-
-[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
-layout_mode = 2
-text = "Spectators: "
-
-[node name="LobbySpectatorsList" type="ScrollContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-follow_focus = true
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="OneOfPlayerName" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
-self_modulate = Color(1, 1, 0.196078, 1)
-layout_mode = 2
-text = "LobbyOwnerName"
-icon = ExtResource("6_fon7l")
-expand_icon = true
-
-[node name="OneOfPlayerName2" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
-layout_mode = 2
-text = "OneOfThePlayersName"
-
-[node name="OneOfPlayerName3" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
-layout_mode = 2
-text = "OneOfThePlayersName"
-
-[node name="MarginContainer3" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer4" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="LobbySettingsContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="LobbySettings" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
 
-[node name="LobbySettingsHeader" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettingsContainer"]
+[node name="Label" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings"]
 layout_mode = 2
-theme = ExtResource("2_l20im")
-theme_type_variation = &"HeaderSmall"
-text = "Lobby settings:"
-
-[node name="LobbySettings" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettingsContainer"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-autowrap_mode = 1
-
-[node name="MarginContainer4" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-
-[node name="VBoxContainer" type="HBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 10
-alignment = 1
-
-[node name="PasswordField" type="LineEdit" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-placeholder_text = "Lobby password"
-
-[node name="JoinButton" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Join"
-
-[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-
-[node name="PlayerProfile" type="PanelContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
-
-[node name="PlayerName" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/PlayerProfile"]
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("2_l20im")
-theme_type_variation = &"HeaderLarge"
-text = "PlayerName"
+text = "Settings"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="ActionsWithPlayer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/PlayerProfile"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-
-[node name="PlayerGamesButton" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/PlayerProfile/ActionsWithPlayer"]
-layout_mode = 2
-text = "His games"
-
-[node name="GridContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/PlayerProfile"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-
-[node name="ColorLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/PlayerProfile/GridContainer"]
-layout_mode = 2
-text = "Main color: "
-
-[node name="CreateNewLobbyContainer" type="PanelContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CreateNewLobbyHeader" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("2_l20im")
-theme_type_variation = &"HeaderLarge"
-text = "Create new Lobby"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MarginContainer3" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-
-[node name="LobbyRequestContainer" type="GridContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer"]
+[node name="LobbyRequestContainer" type="GridContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings"]
 layout_mode = 2
 columns = 2
 
-[node name="LobbyNameLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
-layout_mode = 2
-text = "Lobby name: "
-
-[node name="LobbyNameEdit" type="LineEdit" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-max_length = 20
-
-[node name="LobbyPasswordLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="LobbyPasswordLabel" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Lobby password: "
 
-[node name="LobbyPasswordEdit" type="LineEdit" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="LobbyPasswordEdit" type="LineEdit" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_length = 20
 
-[node name="FieldMinSizeXLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldMinSizeXLabel" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Field min size X: "
 
-[node name="FieldMinSizeXSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldMinSizeXSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
@@ -605,11 +153,11 @@ max_value = 30.0
 value = 3.0
 rounded = true
 
-[node name="FieldMinSizeYLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldMinSizeYLabel" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Field min size Y: "
 
-[node name="FieldMinSizeYSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldMinSizeYSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
@@ -617,11 +165,11 @@ max_value = 30.0
 value = 3.0
 rounded = true
 
-[node name="FieldMaxSizeXLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldMaxSizeXLabel" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Field max size X: "
 
-[node name="FieldMaxSizeXSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldMaxSizeXSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
@@ -629,11 +177,11 @@ max_value = 30.0
 value = 30.0
 rounded = true
 
-[node name="FieldMaxSizeYLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldMaxSizeYLabel" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Field max size Y: "
 
-[node name="FieldMaxSizeYSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldMaxSizeYSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
@@ -641,22 +189,22 @@ max_value = 30.0
 value = 30.0
 rounded = true
 
-[node name="FieldSeedLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldSeedLabel" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Field seed: "
 
-[node name="FieldSeedSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldSeedSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 6.942e+07
 rounded = true
 custom_arrow_step = 111072.0
 
-[node name="PlayersNumberLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="PlayersNumberLabel" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Number of players: "
 
-[node name="PlayersNumberSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="PlayersNumberSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
@@ -664,21 +212,21 @@ max_value = 9.0
 value = 2.0
 rounded = true
 
-[node name="WallsPercentageLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="WallsPercentageLabel" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Walls percentage: "
 
-[node name="FieldWallsPercentageSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldWallsPercentageSelector" type="SpinBox" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 value = 75.0
 rounded = true
 
-[node name="FieldGenerationTypeLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldGenerationTypeLabel" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Field generation type: "
 
-[node name="FieldGenerationTypeSelector" type="OptionButton" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="FieldGenerationTypeSelector" type="OptionButton" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 3
@@ -691,11 +239,11 @@ popup/item_2/text = "Double"
 popup/item_2/id = 2
 popup/item_2/disabled = true
 
-[node name="PlayersPositionTypeLabel" type="Label" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="PlayersPositionTypeLabel" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Players positions type: "
 
-[node name="PlayersPositionTypeSelector" type="OptionButton" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
+[node name="PlayersPositionTypeSelector" type="OptionButton" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 3
@@ -707,33 +255,145 @@ popup/item_1/id = 1
 popup/item_2/text = "Corners"
 popup/item_2/id = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="CreateLobbyButton" type="Button" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbySettings"]
 layout_mode = 2
-size_flags_vertical = 10
-text = "Create"
+text = "Update"
 
-[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-
-[node name="MarginContainer4" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer"]
+[node name="MarginContainer3" type="VSeparator" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
+[node name="LobbyPlayersContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="MarginAfterLobbyInfo" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
+[node name="Label" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
 layout_mode = 2
+text = "Players: "
 
-[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer"]
+[node name="LobbyPlayersList" type="ScrollContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OneOfPlayerName" type="Button" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
+self_modulate = Color(1, 1, 0.196078, 1)
+layout_mode = 2
+text = "LobbyOwnerName"
+icon = ExtResource("6_fon7l")
+expand_icon = true
+
+[node name="OneOfPlayerName2" type="Button" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
+layout_mode = 2
+text = "OneOfThePlayersName"
+
+[node name="OneOfPlayerName3" type="Button" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
+layout_mode = 2
+text = "OneOfThePlayersName"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+
+[node name="Label2" type="Label" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+layout_mode = 2
+text = "Spectators: "
+
+[node name="LobbySpectatorsList" type="ScrollContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OneOfPlayerName" type="Button" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
+self_modulate = Color(1, 1, 0.196078, 1)
+layout_mode = 2
+text = "LobbyOwnerName"
+icon = ExtResource("6_fon7l")
+expand_icon = true
+
+[node name="OneOfPlayerName2" type="Button" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
+layout_mode = 2
+text = "OneOfThePlayersName"
+
+[node name="OneOfPlayerName3" type="Button" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
+layout_mode = 2
+text = "OneOfThePlayersName"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Type in chat"
+
+[node name="MarginContainer4" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Ready"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuService/MultiplayerMenu/TabContainer/FullLobbyInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="+" type="TabBar" parent="MainMenuService/MultiplayerMenu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="BackContainer" type="PanelContainer" parent="MainMenuService/MultiplayerMenu"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+offset_right = 225.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="BackToMainMenu" type="Button" parent="MainMenuService/MultiplayerMenu/BackContainer"]
+custom_minimum_size = Vector2(191, 37)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Back"
 
 [node name="LoginMenu" type="Control" parent="MainMenuService"]
 visible = false
@@ -915,14 +575,7 @@ layout_mode = 2
 
 [connection signal="pressed" from="MainMenuService/MainMenu/MultiplayerButton" to="MainMenuService" method="_on_multiplayer_button_pressed"]
 [connection signal="pressed" from="MainMenuService/MainMenu/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu/MyProfileButton" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_my_profile_button_pressed"]
-[connection signal="toggled" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu/SearchForPlayersCheck" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_search_players_toggled"]
-[connection signal="pressed" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu/SendSearchButton" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_send_search_button_pressed"]
-[connection signal="pressed" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu/CreateLobbyButton" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_create_lobby_button_pressed"]
-[connection signal="toggled" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu/HideFoundResults" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_hide_found_results_toggled"]
-[connection signal="pressed" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/MultiplayerMenu/BackToMainMenu" to="MainMenuService" method="_on_back_to_main_menu_pressed"]
-[connection signal="pressed" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer/JoinButton" to="MainMenuService/MultiplayerMenu/MultiplayerMainScreen" method="_on_join_button_pressed"]
-[connection signal="pressed" from="MainMenuService/MultiplayerMenu/MultiplayerMainScreen/VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/CreateLobbyButton" to="MainMenuService/MultiplayerMenu" method="_on_createLobby_button_pressed"]
+[connection signal="pressed" from="MainMenuService/MultiplayerMenu/BackContainer/BackToMainMenu" to="MainMenuService" method="_on_back_to_main_menu_pressed"]
 [connection signal="toggled" from="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2/AlreadyHaveAccountCheckBox" to="MainMenuService/LoginMenu" method="_on_check_box_toggled"]
 [connection signal="pressed" from="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2/HBoxContainer/BackButton" to="MainMenuService" method="_on_login_back_button_pressed"]
 [connection signal="pressed" from="MainMenuService/LoginMenu/PanelContainer/VBoxContainer2/HBoxContainer/SubmitButton" to="MainMenuService/LoginMenu" method="_on_submit"]
