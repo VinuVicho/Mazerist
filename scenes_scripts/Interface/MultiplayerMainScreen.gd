@@ -170,6 +170,8 @@ func displayLobby(lobby: LobbyDTO):
 	#If player is in lobby: can change color there
 	$VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/ColorPickerButton.visible = amIJoinedLobby
 	$VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/UpdateMyColorInLobbyButton.visible = amIJoinedLobby
+	$VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/BecomeSpectatorButton.visible = amIJoinedLobby && !amISpectator
+	$VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/BecomePlayerButton.visible = amIJoinedLobby && amISpectator
 	$VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/PasswordContainer.visible = amIJoinedLobby
 	if (lobby.hasPassword):
 		$VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/PasswordContainer/LobbyPasswordEdit.placeholder_text = "has password"
@@ -178,8 +180,7 @@ func displayLobby(lobby: LobbyDTO):
 	#If playes is owner: edit password
 	$VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/UpdatePasswordButton.visible = isPlayerOwner
 	$VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/PasswordContainer/LobbyPasswordEdit.editable = isPlayerOwner
-	$VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/BecomeSpectatorButton.visible = amIJoinedLobby && !amISpectator
-	$VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/BecomePlayerButton.visible = amIJoinedLobby && amISpectator
+	$VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/StartGameButton.visible = isPlayerOwner
 	
 	if list.get_children().size() == 0:
 		var newButton = Button.new()
@@ -248,3 +249,7 @@ func _on_change_team_button_pressed(teamId: int) -> void:
 
 func _on_update_password_button_pressed() -> void:
 	Logger.log_error("TODO: Create update password thing")
+
+
+func _on_start_game_button_pressed() -> void:
+	Logger.log_error("TODO: creates map and game starts")

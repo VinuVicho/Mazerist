@@ -588,6 +588,10 @@ text = "OneOfThePlayersName"
 layout_mode = 2
 text = "OneOfThePlayersName"
 
+[node name="StartGameButton" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+layout_mode = 2
+text = "Start game"
+
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -872,6 +876,7 @@ layout_mode = 2
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/UpdateMyColorInLobbyButton" to="." method="_on_update_my_color_in_lobby_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/BecomeSpectatorButton" to="." method="_on_change_team_button_pressed" binds= [0]]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/BecomePlayerButton" to="." method="_on_change_team_button_pressed" binds= [1]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer/JoinAsSpectatorButton" to="." method="_on_join_as_spectator_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayerProfile/GridContainer/UpdateProfileButton" to="." method="_on_update_profile_button_pressed"]
