@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://byfchu7vd6lg8"]
+
+[ext_resource type="Script" path="res://scenes_scripts/field/objects/field_object.gd" id="1_jmhpe"]
+[ext_resource type="Texture2D" uid="uid://s8fi33hls0i" path="res://textures/field/objects/Base.png" id="1_vv8pn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jh72x"]
+
+[node name="Base" type="Area2D" groups=["Base"]]
+z_index = -5
+scale = Vector2(3, 3)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_jmhpe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jh72x")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_vv8pn")
+vframes = 2
+frame = 1

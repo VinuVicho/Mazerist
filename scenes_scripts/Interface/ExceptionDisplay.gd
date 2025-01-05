@@ -1,4 +1,4 @@
-class_name ErrorDisplayer extends Control
+class_name ErrorDisplayer extends CanvasLayer
 
 var randomNumber = 1
 

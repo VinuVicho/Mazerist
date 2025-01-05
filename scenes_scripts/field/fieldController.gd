@@ -61,7 +61,7 @@ func prepareField(mapReplay: MapReplay):			#Викликати із Main для 
 #region PrepareObjects
 func prepareObjects(mapInfo: MapInfo, playersInfo: Dictionary):
 	var objectsPostions: Array = mapInfo.objectsPositions
-	for objPos in  objectsPostions:
+	for objPos in objectsPostions:
 		var objId: int = objPos[2]
 		var newCircle = circleSprite.duplicate()
 		_pathToField.add_child(newCircle)

@@ -54,6 +54,7 @@ editable = false
 
 [node name="MyGamesFilter" type="CheckBox" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
 layout_mode = 2
+button_pressed = true
 text = "My games"
 
 [node name="InLobbyStatusFilter" type="CheckBox" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
@@ -69,7 +70,7 @@ text = "Search"
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="CreateLobbyButton" type="Button" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
+[node name="OpenCreateLobbyWindowButton" type="Button" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
 layout_mode = 2
 size_flags_vertical = 4
 text = "Create new Lobby"
@@ -124,159 +125,6 @@ size_flags_horizontal = 3
 layout_mode = 2
 text = "One of Games"
 
-[node name="Game2" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game3" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game4" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game5" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Gameshhghnggggggggggg"
-text_overrun_behavior = 3
-
-[node name="Game6" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game7" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game8" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game9" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game10" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game11" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game12" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game13" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game14" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game15" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game16" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game24" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game25" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game26" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game27" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game28" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game29" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game30" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game31" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game32" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game33" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game34" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game35" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game36" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game37" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game38" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game39" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game17" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game18" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game19" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game20" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game21" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game22" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
-[node name="Game23" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
-layout_mode = 2
-text = "One of Games"
-
 [node name="Margin2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/ListColumn"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -285,15 +133,15 @@ layout_mode = 2
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="GameInfoContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="LobbyInfoContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer"]
 layout_mode = 2
 
-[node name="LobbyNameLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
+[node name="LobbyNameLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_rc7i0")
@@ -302,56 +150,57 @@ text = "Lobby name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="AnotherLobbyThings" type="PanelContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="AnotherLobbyThings" type="PanelContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="LobbySettings" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="LobbySettings" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 layout_mode = 2
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="LobbyRequestContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="LobbyRequestContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 layout_mode = 2
 columns = 2
 
-[node name="LobbyNameLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="LobbyNameLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Lobby name: "
 
-[node name="LobbyNameEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="LobbyNameEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Lobby name"
 max_length = 20
 
-[node name="FieldMinSizeXLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldMinSizeXLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Field min size X: "
 
-[node name="FieldMinSizeXSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldMinSizeXSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
@@ -359,11 +208,11 @@ max_value = 30.0
 value = 3.0
 rounded = true
 
-[node name="FieldMinSizeYLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldMinSizeYLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Field min size Y: "
 
-[node name="FieldMinSizeYSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldMinSizeYSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
@@ -371,11 +220,11 @@ max_value = 30.0
 value = 3.0
 rounded = true
 
-[node name="FieldMaxSizeXLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldMaxSizeXLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Field max size X: "
 
-[node name="FieldMaxSizeXSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldMaxSizeXSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
@@ -383,11 +232,11 @@ max_value = 30.0
 value = 30.0
 rounded = true
 
-[node name="FieldMaxSizeYLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldMaxSizeYLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Field max size Y: "
 
-[node name="FieldMaxSizeYSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldMaxSizeYSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
@@ -395,22 +244,22 @@ max_value = 30.0
 value = 30.0
 rounded = true
 
-[node name="FieldSeedLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldSeedLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Field seed: "
 
-[node name="FieldSeedSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldSeedSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 6.942e+07
 rounded = true
 custom_arrow_step = 111072.0
 
-[node name="PlayersNumberLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="PlayersNumberLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Number of players: "
 
-[node name="PlayersNumberSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="PlayersNumberSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
@@ -418,21 +267,21 @@ max_value = 9.0
 value = 2.0
 rounded = true
 
-[node name="WallsPercentageLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="WallsPercentageLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Walls percentage: "
 
-[node name="FieldWallsPercentageSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldWallsPercentageSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 value = 75.0
 rounded = true
 
-[node name="FieldGenerationTypeLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldGenerationTypeLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Field generation type: "
 
-[node name="FieldGenerationTypeSelector" type="OptionButton" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="FieldGenerationTypeSelector" type="OptionButton" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 3
@@ -445,11 +294,11 @@ popup/item_2/text = "Double"
 popup/item_2/id = 2
 popup/item_2/disabled = true
 
-[node name="PlayersPositionTypeLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="PlayersPositionTypeLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 text = "Players positions type: "
 
-[node name="PlayersPositionTypeSelector" type="OptionButton" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
+[node name="PlayersPositionTypeSelector" type="OptionButton" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 3
@@ -461,36 +310,36 @@ popup/item_1/id = 1
 popup/item_2/text = "Corners"
 popup/item_2/id = 2
 
-[node name="UpdateLobbyInfoButton" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="UpdateLobbyInfoButton" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 layout_mode = 2
 text = "Update lobby"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="PasswordContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="PasswordContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 layout_mode = 2
 
-[node name="LobbyPasswordLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/PasswordContainer"]
+[node name="LobbyPasswordLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/PasswordContainer"]
 layout_mode = 2
 text = "Lobby password: "
 
-[node name="LobbyPasswordEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/PasswordContainer"]
+[node name="LobbyPasswordEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/PasswordContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "has no password"
 max_length = 20
 
-[node name="UpdatePasswordButton" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="UpdatePasswordButton" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 layout_mode = 2
 text = "Update password"
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -499,130 +348,134 @@ color = Color(1, 1, 1, 1)
 edit_alpha = false
 script = ExtResource("4_qsvbc")
 
-[node name="UpdateMyColorInLobbyButton" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="UpdateMyColorInLobbyButton" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 layout_mode = 2
 text = "Update my color"
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="BecomeSpectatorButton" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="BecomeSpectatorButton" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 visible = false
 layout_mode = 2
 text = "Become spectator"
 
-[node name="BecomePlayerButton" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="BecomePlayerButton" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 layout_mode = 2
 text = "Become player"
 
-[node name="MarginContainer3" type="VSeparator" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer3" type="VSeparator" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="LobbyPlayersContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="LobbyPlayersContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
 layout_mode = 2
 text = "Players"
 horizontal_alignment = 1
 
-[node name="LobbyPlayersList" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+[node name="LobbyPlayersList" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="OneOfPlayerName" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
+[node name="OneOfPlayerName" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
 self_modulate = Color(1, 1, 0.196078, 1)
 layout_mode = 2
 text = "LobbyOwnerName"
 icon = ExtResource("3_yyhql")
 expand_icon = true
 
-[node name="OneOfPlayerName2" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
+[node name="OneOfPlayerName2" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
 layout_mode = 2
 text = "OneOfThePlayersName"
 
-[node name="OneOfPlayerName3" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
+[node name="OneOfPlayerName3" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbyPlayersList/VBoxContainer"]
 layout_mode = 2
 text = "OneOfThePlayersName"
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
 layout_mode = 2
 text = "Spectators"
 horizontal_alignment = 1
 
-[node name="LobbySpectatorsList" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+[node name="LobbySpectatorsList" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="OneOfPlayerName" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
+[node name="OneOfPlayerName" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
 self_modulate = Color(1, 1, 0.196078, 1)
 layout_mode = 2
 text = "LobbyOwnerName"
 icon = ExtResource("3_yyhql")
 expand_icon = true
 
-[node name="OneOfPlayerName2" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
+[node name="OneOfPlayerName2" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
 layout_mode = 2
 text = "OneOfThePlayersName"
 
-[node name="OneOfPlayerName3" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
+[node name="OneOfPlayerName3" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/LobbySpectatorsList/VBoxContainer"]
 layout_mode = 2
 text = "OneOfThePlayersName"
 
-[node name="StartGameButton" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+[node name="ViewGameButton" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+layout_mode = 2
+text = "View Game"
+
+[node name="StartGameButton" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
 layout_mode = 2
 text = "Start game"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="PasswordField" type="LineEdit" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer"]
+[node name="PasswordField" type="LineEdit" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 placeholder_text = "Lobby password"
 
-[node name="JoinButton" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer"]
+[node name="JoinButton" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Join"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="JoinAsSpectatorButton" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer"]
+[node name="JoinAsSpectatorButton" type="Button" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 disabled = true
 text = "Join as spectator"
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
@@ -858,6 +711,79 @@ layout_mode = 2
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
+[node name="GameInfoContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="GameIdDisplayer" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rc7i0")
+theme_type_variation = &"HeaderLarge"
+text = "Game id: "
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="StateOfGameLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game turn: 0"
+horizontal_alignment = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="PlayerLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Player"
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 0.5
+text = "Score"
+horizontal_alignment = 1
+
+[node name="TurnsCompletedLabel" type="Label" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Turns Completed"
+
+[node name="ViewReplayButton" type="Button" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "Go to replay"
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+
 [node name="MarginAfterLobbyInfo" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
@@ -869,14 +795,14 @@ layout_mode = 2
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MultiplayerMenu/MyProfileButton" to="." method="_on_my_profile_button_pressed"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/MultiplayerMenu/SearchForPlayersCheck" to="." method="_on_search_players_toggled"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MultiplayerMenu/SendSearchButton" to="." method="_on_send_search_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/MultiplayerMenu/CreateLobbyButton" to="." method="_on_create_lobby_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MultiplayerMenu/OpenCreateLobbyWindowButton" to="." method="_on_open_create_lobby_window_button_pressed"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/MultiplayerMenu/HideFoundResults" to="." method="_on_hide_found_results_toggled"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/UpdateLobbyInfoButton" to="." method="_on_update_lobby_info_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/UpdatePasswordButton" to="." method="_on_update_password_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/UpdateMyColorInLobbyButton" to="." method="_on_update_my_color_in_lobby_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/BecomeSpectatorButton" to="." method="_on_change_team_button_pressed" binds= [0]]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/BecomePlayerButton" to="." method="_on_change_team_button_pressed" binds= [1]]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/GameInfoContainer/VBoxContainer/VBoxContainer/JoinAsSpectatorButton" to="." method="_on_join_as_spectator_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/UpdateLobbyInfoButton" to="." method="_on_update_lobby_info_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/UpdatePasswordButton" to="." method="_on_update_password_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/UpdateMyColorInLobbyButton" to="." method="_on_update_my_color_in_lobby_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/BecomeSpectatorButton" to="." method="_on_change_team_button_pressed" binds= [0]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/BecomePlayerButton" to="." method="_on_change_team_button_pressed" binds= [1]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/VBoxContainer/JoinAsSpectatorButton" to="." method="_on_join_as_spectator_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayerProfile/GridContainer/UpdateProfileButton" to="." method="_on_update_profile_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/CreateLobbyButton" to="." method="_on_create_lobby_button_pressed"]

@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://cf8q0hect6psa"]
+[gd_scene load_steps=11 format=3 uid="uid://cf8q0hect6psa"]
 
-[ext_resource type="Script" path="res://scenes_scripts/menu/menu_service.gd" id="1_76agj"]
+[ext_resource type="Script" path="res://scenes_scripts/menu/interface_service.gd" id="1_76agj"]
 [ext_resource type="Script" path="res://scenes_scripts/menu/MainMenuService.gd" id="2_0fmgp"]
 [ext_resource type="Script" path="res://scenes_scripts/Interface/LoginMenu.gd" id="2_allxp"]
 [ext_resource type="Theme" uid="uid://hijfoh1qr26t" path="res://textures/theme/mainScene.tres" id="2_l20im"]
 [ext_resource type="Script" path="res://scenes_scripts/menu/MultiplayerMenu.gd" id="3_444l0"]
 [ext_resource type="Script" path="res://test/colorPickerEditor/colorPicketButton.gd" id="3_qpxha"]
-[ext_resource type="PackedScene" uid="uid://cd4jdybfpfk2" path="res://scenes/menu/multiplayer_main_screen.tscn" id="4_cklp3"]
+[ext_resource type="PackedScene" uid="uid://cd4jdybfpfk2" path="res://scenes/interface/multiplayer_main_screen.tscn" id="4_cklp3"]
 [ext_resource type="Texture2D" uid="uid://du6718qkkw12g" path="res://icon.svg" id="6_fon7l"]
 [ext_resource type="Script" path="res://scenes_scripts/Interface/ExceptionDisplay.gd" id="9_0km6m"]
+[ext_resource type="PackedScene" uid="uid://cchrr75eduixk" path="res://scenes/interface/game_ui.tscn" id="10_u84mq"]
 
 [node name="InterfaceService" type="Control"]
 layout_mode = 3
@@ -59,6 +60,7 @@ layout_mode = 2
 text = "Exit Windows"
 
 [node name="MultiplayerMenu" type="Control" parent="MainMenuService"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -396,7 +398,6 @@ size_flags_vertical = 0
 text = "Back"
 
 [node name="LoginMenu" type="Control" parent="MainMenuService"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -501,6 +502,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 focus_mode = 0
+button_pressed = true
 text = "  I already have an account"
 alignment = 1
 
@@ -526,21 +528,19 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 text = "Submit"
 
-[node name="ExceptionDisplayer" type="Control" parent="."]
-unique_name_in_owner = true
+[node name="GameUI" parent="." instance=ExtResource("10_u84mq")]
 visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
+
+[node name="ExceptionDisplayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 16
+visible = false
 script = ExtResource("9_0km6m")
 
 [node name="Timer" type="Timer" parent="ExceptionDisplayer"]
 wait_time = 5.0
 
 [node name="PanelContainer" type="PanelContainer" parent="ExceptionDisplayer"]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

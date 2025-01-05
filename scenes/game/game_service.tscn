@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://xi6uqgtsdmer"]
+
+[ext_resource type="Script" path="res://scenes_scripts/game/game_service.gd" id="1_01oie"]
+
+[node name="GameService" type="Node2D"]
+script = ExtResource("1_01oie")
+
+[node name="Field" type="Node2D" parent="."]
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="TimerOfGameEnd" type="Timer" parent="."]
+one_shot = true
+
+[node name="GameCamera" type="Camera2D" parent="."]
+anchor_mode = 0
+enabled = false
+
+[connection signal="timeout" from="TimerOfGameEnd" to="." method="_on_timer_of_game_end_timeout"]

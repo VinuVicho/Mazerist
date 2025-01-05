@@ -1,21 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7ttix3q2p5a3"]
 
-[ext_resource type="PackedScene" uid="uid://ct3b00f8347jt" path="res://scenes/field/fieldController.tscn" id="1_dbntk"]
 [ext_resource type="Script" path="res://scenes_scripts/Main/main.gd" id="1_wa4gm"]
 [ext_resource type="PackedScene" uid="uid://d2qghhwseeqyx" path="res://scenes/web/web_service.tscn" id="3_l37gg"]
-[ext_resource type="PackedScene" uid="uid://cf8q0hect6psa" path="res://scenes/menu/menu_service.tscn" id="4_bhkq6"]
+[ext_resource type="PackedScene" uid="uid://cf8q0hect6psa" path="res://scenes/interface/interface_service.tscn" id="4_bhkq6"]
+[ext_resource type="PackedScene" uid="uid://xi6uqgtsdmer" path="res://scenes/game/game_service.tscn" id="5_mrk6o"]
 
 [node name="MainScene" type="Node"]
 script = ExtResource("1_wa4gm")
-
-[node name="FieldController" parent="." instance=ExtResource("1_dbntk")]
 
 [node name="WebService" parent="." instance=ExtResource("3_l37gg")]
 
 [node name="InterfaceService" parent="." instance=ExtResource("4_bhkq6")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="MainCamera" type="Camera2D" parent="."]
 anchor_mode = 0
+enabled = false
 
 [node name="Button" type="Button" parent="."]
 offset_left = -416.0
@@ -23,3 +22,5 @@ offset_top = -240.0
 offset_right = -329.0
 offset_bottom = -209.0
 text = "some butt"
+
+[node name="GameService" parent="." instance=ExtResource("5_mrk6o")]

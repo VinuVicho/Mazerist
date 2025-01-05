@@ -12,6 +12,7 @@ var objectsPositions: Array = [] 				#array, to sav obj and their Vector2i
 #Властивості поля
 var fieldGenerationType: int = 0
 var playersPositionType: int = 0
+var gameType: int = 0			#TODO
 var wallsPercentage: int = 0
 var fieldSeed: int = 0
 
@@ -44,6 +45,7 @@ func toJSON() -> Dictionary:
 		
 		"wallsPercentage": wallsPercentage,
 		"fieldSeed": fieldSeed,
+		"gameType": gameType,
 		"fieldGenerationType": fieldGenerationType,
 		"playersPositionType": playersPositionType,
 	}
@@ -61,6 +63,7 @@ static func toObject(json: Dictionary) -> MapInfo:
 	
 	result.wallsPercentage = json["wallsPercentage"]
 	result.fieldGenerationType = json["fieldGenerationType"]
+	result.gameType = json["gameType"]
 	result.playersPositionType = json["playersPositionType"]
 	result.fieldSeed = json["fieldSeed"]
 	return result

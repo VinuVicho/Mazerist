@@ -1,0 +1,119 @@
+[gd_scene load_steps=3 format=3 uid="uid://cchrr75eduixk"]
+
+[ext_resource type="Script" path="res://scenes_scripts/Interface/game_ui.gd" id="1_84aud"]
+[ext_resource type="Theme" uid="uid://hijfoh1qr26t" path="res://textures/theme/mainScene.tres" id="2_0us3n"]
+
+[node name="GameUI" type="CanvasLayer"]
+process_priority = 10
+process_physics_priority = 10
+script = ExtResource("1_84aud")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -84.0
+offset_right = 100.0
+grow_vertical = 0
+
+[node name="ReloadGameButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Reload"
+
+[node name="RestartReplayButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+text = "Restart"
+
+[node name="BackToMenuButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+text = "Back"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -84.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="WatchReplayButton" type="Button" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "Watch my replay"
+
+[node name="RemoveReplayButton" type="Button" parent="VBoxContainer2"]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Remove my replay"
+
+[node name="SubmitReplayButton" type="Button" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Submit my replay"
+
+[node name="TimerBeforeStartLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -58.0
+offset_right = 58.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme = ExtResource("2_0us3n")
+theme_type_variation = &"HeaderLarge"
+text = "999"
+
+[node name="StartGamePanel" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -34.5
+offset_right = 43.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartGamePanel"]
+layout_mode = 2
+
+[node name="GameTimerLabel" type="Label" parent="StartGamePanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_0us3n")
+theme_type_variation = &"HeaderLarge"
+text = "3"
+horizontal_alignment = 1
+
+[node name="StartGameButton" type="Button" parent="StartGamePanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+text = "START"
+
+[node name="TimerBeforeStart" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="GameHintLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("2_0us3n")
+theme_type_variation = &"HeaderMedium"
+text = "Game hint"
+
+[connection signal="pressed" from="VBoxContainer/ReloadGameButton" to="." method="_on_reload_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/RestartReplayButton" to="." method="_on_restart_replay_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/WatchReplayButton" to="." method="_on_watch_replay_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/RemoveReplayButton" to="." method="_on_remove_replay_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/SubmitReplayButton" to="." method="_on_submit_replay_button_pressed"]
+[connection signal="pressed" from="StartGamePanel/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="timeout" from="TimerBeforeStart" to="." method="_on_timer_before_start_timeout"]

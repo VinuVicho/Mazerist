@@ -10,7 +10,7 @@ func addModule():
 	pass			#TODO: add shoot moifications here
 
 func shoot(positionOfStart: Vector2, rotation):
-	var weaponCol = get_parent().get_node("BulletCollision/WeaponCollision")
+	var weaponCol = get_parent().get_node("ObjectsCollision/WeaponCollision")
 	weaponCol.disabled = true
 	get_parent().get_node("WeaponCooldown").start()
 	var created = bullet.instantiate()

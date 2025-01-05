@@ -1,7 +1,7 @@
 extends PhysicsBody2D
 
 var speed = 350		#/1.5
-var time_life         = 10
+var time_life         = 100
 var parent_tank_id    = -1
 var velocity: Vector2 = Vector2(0, 0)
 

@@ -37,7 +37,7 @@ static func toObject(json: Dictionary) -> PlayerDTO:
 	return result
 
 static func toListOfObjects(jsons: Array) -> Array[PlayerDTO]:
-	var result: Array[PlayerDTO]
+	var result: Array[PlayerDTO] = []
 	for json in jsons:
 		result.append(toObject(json))
 	return result

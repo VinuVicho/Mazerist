@@ -42,7 +42,7 @@ static func toObject(json: Dictionary) -> FieldRequest:
 	result.fieldGenerationType = json["fieldGenerationType"]
 	result.playersPositionType = json["playersPositionType"]
 	
-	var seed = json["fieldSeed"]
-	if seed != null:
-		result.fieldSeed = seed
+	var maybeSeed = json["fieldSeed"]
+	if maybeSeed != null:
+		result.fieldSeed = maybeSeed
 	return result

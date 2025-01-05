@@ -1,18 +1,20 @@
 extends Node
 
 var playerId: int = 0
-var services: Dictionary = {} 
-var allServicesLoaded := false
 #	get_tree().root.get_node("MainScene")			get mainScene node
 
+var gameService: GameService
+var interfaceService: InterfaceService
+var gameUI: GameUI
 var webService: WebService
+var mainScene: MainScene
+
 var errorDisplayer: ErrorDisplayer
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if gameService == null: Logger.log_error("No game service. MEGA-ERROR")
+	if webService == null: Logger.log_error("No web service. MEGA-ERROR")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func verifyObjectIsNotNullAndReturnIt(obj):
+	if obj == null: Logger.log_error("Object is null")
+	return obj

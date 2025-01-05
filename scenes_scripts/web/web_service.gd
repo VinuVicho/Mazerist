@@ -16,6 +16,66 @@ func _ready() -> void:
 
 #region Endpoints
 
+#region Game
+
+func submitGameReplay(replayDto: SubmitReplayDto) -> GameDTO:
+	const url = "Game/submitReplay"
+	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, replayDto.to_string())
+	if responce.success() && !responce.status_err():
+		return GameDTO.toObject(responce.body_as_json())
+	Logger.log_error("Submitting replay failed: " + str(responce.status))
+	return
+
+func endGameTurn(scoresDto: ScoresDto) -> GameDTO:
+	const url = "Game/endTurn"
+	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, scoresDto.to_string())
+	if responce.success() && !responce.status_err():
+		return GameDTO.toObject(responce.body_as_json())
+	Logger.log_error("Sending scores failed: " + str(responce.status))
+	return
+
+func getAllGames() -> Array[GameDTO]:
+	const url = "Game/all"
+	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
+	if responce.success() && !responce.status_err():
+		return GameDTO.toListOfObjects(responce.body_as_json())
+	Logger.log_error("Getting all games failed: " + str(responce.status))
+	return []
+
+func getPlayerGames() -> Array[GameDTO]:
+	const url = "Game/my"
+	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
+	if responce.success() && !responce.status_err():
+		return GameDTO.toListOfObjects(responce.body_as_json())
+	Logger.log_error("Getting my games failed: " + str(responce.status))
+	return []
+
+func getGameBasicInfo(gameId: int) -> GameDTO:
+	var url = "Game/" + str(gameId)
+	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
+	if responce.success() && !responce.status_err():
+		return GameDTO.toObject(responce.body_as_json())
+	Logger.log_error("Getting basic info of game failed: " + str(responce.status))
+	return
+
+func getFullGame(gameId: int) -> GameDTO:
+	var url = "Game/full/" + str(gameId)
+	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
+	if responce.success() && !responce.status_err():
+		return GameDTO.toObject(responce.body_as_json())
+	Logger.log_error("Getting full game failed: " + str(responce.status))
+	return
+
+func deleteGame(gameId: int) -> bool:
+	var url = "Game/" + str(gameId)
+	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_DELETE)
+	if responce.success() && !responce.status_err():
+		return true
+	Logger.log_error("Deleting game failed: " + str(responce.status))
+	return false
+
+#endregion
+
 #region Lobby
 
 func getAllLobbies() -> Array[LobbyDTO]:
@@ -112,13 +172,28 @@ func changeColorInLobby(lobbyId: int, color: String) -> LobbyDTO:
 	return
 
 func switchTeamsInLobby(lobbyId: int, teamId: int) -> LobbyDTO:
-	var url = "Lobby/" + str(lobbyId) + "/switchTeams/" + str(teamId)
+	var url := "Lobby/" + str(lobbyId) + "/switchTeams/" + str(teamId)
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
 		return LobbyDTO.toObject(responce.body_as_json())
 	Logger.log_error("Changing color in lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return
 
+func changePasswordForLobby(request: LobbyRequest) -> LobbyDTO:
+	const url = "Lobby/changePassword"
+	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_POST, request.to_string())
+	if responce.success() && !responce.status_err():
+		return LobbyDTO.toObject(responce.body_as_json())
+	Logger.log_error("Changing password in lobby " + str(request.lobbyId) + " failed: " + str(responce.status))
+	return
+
+func startGameInLobby(lobbyId: int) -> GameDTO:
+	var url := "Lobby/start/" + str(lobbyId)
+	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
+	if responce.success() && !responce.status_err():
+		return GameDTO.toObject(responce.body_as_json())
+	Logger.log_error("Starting game in lobby " + str(lobbyId) + " failed: " + str(responce.status))
+	return
 #endregion
 
 #endregion
@@ -218,7 +293,7 @@ func addAuthorizationBearer(JWToken: String):
 			#Probably remove logs here before release
 func send_simle_httpRequest(url: String, method := HTTPClient.Method.METHOD_GET, request_data := ""):
 	var time_before = Time.get_ticks_msec()
-	Logger.log_with_color("Sending request (" + str(time_before) + "): " + url + " " + request_data, "GREEN_YELLOW")
+	Logger.log_with_color("Sending request (" + str(time_before) + "): " + url + " " + request_data, "LIME_GREEN")
 	var thisHttpRequest = simpleHttpRequest.duplicate()
 	add_child(thisHttpRequest)
 	

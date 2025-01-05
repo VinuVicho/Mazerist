@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://crnal1lj1o2fe"]
+
+[ext_resource type="Script" path="res://scenes_scripts/field/objects/field_object.gd" id="1_hrevv"]
+[ext_resource type="Texture2D" uid="uid://s8fi33hls0i" path="res://textures/field/objects/Base.png" id="1_qestq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iukec"]
+
+[node name="Artefact" type="Area2D" groups=["Artefact"]]
+z_index = -5
+scale = Vector2(3, 3)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_hrevv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iukec")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qestq")
+vframes = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

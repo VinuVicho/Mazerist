@@ -1,11 +1,9 @@
 extends Control
 
-
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	$PanelContainer/VBoxContainer/ColorPickerContainer.visible = !toggled_on
 	$PanelContainer/VBoxContainer/UsernameContainer.visible = !toggled_on
 	pass
-
 
 func _on_submit() -> void:
 	if $PanelContainer/VBoxContainer2/AlreadyHaveAccountCheckBox.button_pressed:
@@ -18,11 +16,10 @@ func perform_LoginRequest():
 	loginRequest.login = $PanelContainer/VBoxContainer/LoginContainer/TextEditLogin.text
 	loginRequest.password = $PanelContainer/VBoxContainer/PasswordContainer/TextEditPassword.text
 	var isSuccessfull: bool = await Global.webService.login_player(loginRequest)
-	if isSuccessfull:
-		get_parent()._on_multiplayer_button_pressed()
+	if !isSuccessfull:
+		Logger.log_error("Login not successful")
 		return
-	Logger.log_error("Login not successful")
-	
+	get_parent()._on_multiplayer_button_pressed()
 
 func perform_CreateAccountRequest():
 	var createRequest := PlayerCreateRequest.new()
@@ -31,4 +28,7 @@ func perform_CreateAccountRequest():
 	createRequest.username = $PanelContainer/VBoxContainer/UsernameContainer/TextEditUsername.text
 	createRequest.color = $PanelContainer/VBoxContainer/ColorPickerContainer/ColorPickerButton.color.to_html(false)
 	var result: PlayerDTO = await Global.webService.register_player(createRequest)
-	#TODO: show playerInfo and make auto login
+	if (result == null): 
+		Logger.log_error("There was an error creating account")
+		return
+	perform_LoginRequest()

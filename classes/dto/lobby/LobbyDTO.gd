@@ -6,6 +6,8 @@ var lobbyOwnerId: int
 var hasPassword: bool
 var players: Array[PlayerDTO]
 var lobbySettings: FieldRequest
+var lobbyStatus: int
+var gameId: int
 
 func _to_string() -> String:
 	return JSON.stringify(toJSON())
@@ -16,6 +18,8 @@ func toJSON() -> Dictionary:
 		"lobbyName": lobbyName,
 		"lobbyOwnerId": lobbyOwnerId,
 		"hasPassword": hasPassword,
+		"lobbyStatus": lobbyStatus,
+		"gameId": gameId,
 	}
 	
 	var playersList: Array[Dictionary] = []
@@ -34,6 +38,8 @@ static func toObject(json: Dictionary) -> LobbyDTO:
 	result.lobbyName = json["lobbyName"]
 	result.lobbyOwnerId = json["lobbyOwnerId"]
 	result.hasPassword = json["hasPassword"]
+	result.gameId = json["gameId"]
+	result.lobbyStatus = json["lobbyStatus"]
 	
 	result.players = []
 	var playerJSONs = json["players"]
@@ -47,7 +53,7 @@ static func toObject(json: Dictionary) -> LobbyDTO:
 	return result
 
 static func toListOfObjects(jsons: Array) -> Array[LobbyDTO]:
-	var result: Array[LobbyDTO]
+	var result: Array[LobbyDTO] = []
 	for json in jsons:
 		result.append(toObject(json))
 	return result

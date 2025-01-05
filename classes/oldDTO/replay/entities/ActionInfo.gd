@@ -22,3 +22,9 @@ func toJSON():
 		"rotation": rotation
 	}
 	return dictWithInfo
+
+static func toString(actions: Array[ActionInfo]) -> String:
+	var result: Array = []
+	for action in actions:
+		result.append(action.toJSON())
+	return str(result)

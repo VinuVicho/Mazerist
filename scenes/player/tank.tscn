@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bi63vn40slr4f"]
+[gd_scene load_steps=13 format=3 uid="uid://bi63vn40slr4f"]
 
 [ext_resource type="Script" path="res://scenes_scripts/player/tank/tank.gd" id="1_nfre3"]
 [ext_resource type="Texture2D" uid="uid://bthpqgkw6l174" path="res://textures/tank/basic/body/TankBody.png" id="2_xnt8t"]
 [ext_resource type="Texture2D" uid="uid://dflhf8qjtvh5q" path="res://textures/tank/basic/weapon/TankWeapon.png" id="3_v0bm0"]
 [ext_resource type="Texture2D" uid="uid://c7ci2n50gys7t" path="res://textures/tank/basic/body/destroyed/TankBodyDestroyed2.png" id="4_bbvdh"]
 [ext_resource type="Texture2D" uid="uid://ouufvqqm3cvu" path="res://textures/tank/basic/weapon/destroyed/TankWeaponDestroyed2.png" id="5_30w00"]
-[ext_resource type="Script" path="res://scenes_scripts/player/player_control/singlePlayerControl.gd" id="6_mo8kk"]
 [ext_resource type="PackedScene" uid="uid://btfropalg0ehc" path="res://scenes/player/components/hit_component.tscn" id="6_n3xnt"]
 [ext_resource type="PackedScene" uid="uid://86srb5gqho6m" path="res://scenes/player/components/shoot_component.tscn" id="7_e3y3u"]
+[ext_resource type="PackedScene" uid="uid://c4wkc0w6xdabh" path="res://resources/circle_sprite.tscn" id="8_d3m2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r51r3"]
 size = Vector2(53.2293, 57.1593)
@@ -15,8 +15,17 @@ size = Vector2(53.2293, 57.1593)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxxdb"]
 size = Vector2(258, 342)
 
+[sub_resource type="Gradient" id="Gradient_db4jp"]
+offsets = PackedFloat32Array(0.242991, 0.700935)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8j50q"]
+gradient = SubResource("Gradient_db4jp")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Tank" type="CharacterBody2D" groups=["Tank", "TankComponent"]]
-scale = Vector2(0.18, 0.18)
+scale = Vector2(0.14, 0.14)
 collision_mask = 128
 motion_mode = 1
 wall_min_slide_angle = 0.0
@@ -42,15 +51,16 @@ texture = ExtResource("3_v0bm0")
 
 [node name="BodyDestroyed" type="Sprite2D" parent="."]
 visible = false
+z_index = -100
 texture = ExtResource("4_bbvdh")
 
 [node name="WeaponDestroyed" type="Sprite2D" parent="."]
 visible = false
+z_index = -100
 position = Vector2(0, -44)
 texture = ExtResource("5_30w00")
 
 [node name="TankController" type="Node" parent="." groups=["TankMovementController"]]
-script = ExtResource("6_mo8kk")
 
 [node name="WeaponCooldown" type="Timer" parent="."]
 wait_time = 2.635
@@ -63,18 +73,26 @@ one_shot = true
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -252.183)
 
-[node name="BulletCollision" type="Area2D" parent="." groups=["TankArea"]]
+[node name="ObjectsCollision" type="Area2D" parent="." groups=["TankArea"]]
+editor_description = "Bullet and Object collision"
 visible = false
 collision_layer = 0
-collision_mask = 2
+collision_mask = 10
 monitorable = false
 
-[node name="WeaponCollision" type="CollisionShape2D" parent="BulletCollision"]
+[node name="WeaponCollision" type="CollisionShape2D" parent="ObjectsCollision"]
 position = Vector2(-1.44012, -199.58)
 shape = SubResource("RectangleShape2D_r51r3")
 
-[node name="BodyCollision" type="CollisionShape2D" parent="BulletCollision"]
+[node name="BodyCollision" type="CollisionShape2D" parent="ObjectsCollision"]
 position = Vector2(-9.53674e-06, 9.53674e-06)
 shape = SubResource("RectangleShape2D_pxxdb")
 
-[connection signal="body_entered" from="BulletCollision" to="." method="_on_bullet_collision_body_entered"]
+[node name="AuraSprite" parent="." instance=ExtResource("8_d3m2s")]
+visible = false
+show_behind_parent = true
+scale = Vector2(8, 8)
+texture = SubResource("GradientTexture2D_8j50q")
+
+[connection signal="area_entered" from="ObjectsCollision" to="." method="_on_objects_collision_area_entered"]
+[connection signal="body_entered" from="ObjectsCollision" to="." method="_on_collision_body_entered"]
