@@ -10,6 +10,7 @@ enum LobbyStatus {
 	LOBBY,
 	MAP_PICK,
 	GAME, 
+	CREATING_MAP,
 }
 
 enum PositionType {

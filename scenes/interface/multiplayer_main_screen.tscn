@@ -292,7 +292,6 @@ popup/item_1/text = "Default"
 popup/item_1/id = 1
 popup/item_2/text = "Double"
 popup/item_2/id = 2
-popup/item_2/disabled = true
 
 [node name="PlayersPositionTypeLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
@@ -673,7 +672,6 @@ popup/item_1/text = "Default"
 popup/item_1/id = 1
 popup/item_2/text = "Double"
 popup/item_2/id = 2
-popup/item_2/disabled = true
 
 [node name="PlayersPositionTypeLabel" type="Label" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
 layout_mode = 2
