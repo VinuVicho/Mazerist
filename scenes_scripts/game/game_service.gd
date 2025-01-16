@@ -11,6 +11,7 @@ var playerTank = preload("res://scenes/player/tank.tscn").instantiate()
 var wallForCreation = preload("res://scenes/field/wall.tscn").instantiate()
 #TODO: Create a special class to create maps and move this scenes there 
 var circleSprite = preload("res://resources/circle_sprite.tscn").instantiate()
+var squareSprite = preload("res://resources/square_sprite.tscn").instantiate()
 var artefactScene = preload("res://scenes/field/objects/artefact.tscn").instantiate()
 var playerBaseScene = preload("res://scenes/field/objects/base.tscn").instantiate()
 
@@ -22,6 +23,11 @@ var previousActions: Array
 
 var playersAlive: int = 0
 var playersInGame: int = 0
+
+# Array[Array[bool]]
+var gameField: Array[Array] = []
+var horizontalWalls: Array[Array] = []
+var verticalWalls: Array[Array] = []
 
 var shouldCalculateScore := false
 var gameState: Enums.GameState = Enums.GameState.PRE_GAME
@@ -43,6 +49,8 @@ func loadGame(game: GameDTO) -> bool:
 	Global.gameUI.resetUI()
 	thisGameId = game.gameId
 	setCameraScale(game.field.sizeX, game.field.sizeY)
+	calculateField(game.field)
+	hideNonField(game.field)
 	makeFieldWalls(game.field)
 	setTimerTime(game)
 	var playersDictionary: Dictionary = createPlayersDictionary(game.players)
@@ -139,9 +147,6 @@ func prepareObjects(objPositions: Array, players: Dictionary):
 			_:
 				Logger.log_error("Strange object position found: " + str(positionType))
 				var newCircle = circleSprite.duplicate()
-				if positionType == Enums.PositionType.PLAYER_SPAWN && player.playerId == Global.playerId:
-					thisPlayerStartingPosition = objPos
-				# TODO: remove
 				_pathToObjects.add_child(newCircle)
 				newCircle.position = Vector2(50 + objPos[1] * 100, 50 + objPos[0] * 100)
 				newCircle.name = "circleSprite" + str(objPos[2])
@@ -199,6 +204,67 @@ func makeFieldWalls(mapInfo: MapInfo):
 		_pathToField.add_child(wall)
 		wall.name = "VerticalWall" + str(yId) + "_" + str(xId)
 		wall.position = Vector2(150 + 100 * xId, 200 + yId * 100)
+
+func hideNonField(mapInfo: MapInfo):
+	for y in mapInfo.sizeY:
+		for x in mapInfo.sizeX:
+			if !gameField[y][x]:
+				var rX = x + 1
+				var rY = y + 1
+				var newHiddenSpot = squareSprite.duplicate()
+				_pathToField.add_child(newHiddenSpot)
+				newHiddenSpot.position = Vector2(50 + rX * 100, 50 + rY * 100)
+func calculateField(mapInfo: MapInfo):
+	gameField = []
+	horizontalWalls = []
+	verticalWalls = []
+	
+	for y in mapInfo.sizeY:
+		var arrayY: Array[bool] = []
+		for x in mapInfo.sizeX:
+			arrayY.append(false)
+		gameField.append(arrayY)
+	gameField[mapInfo.objectsPositions[0][0] - 1][mapInfo.objectsPositions[0][1] - 1] = true
+	
+	for y in mapInfo.sizeY - 1:
+		var arrayY: Array[bool] = []
+		for x in mapInfo.sizeX:
+			arrayY.append(false)
+		horizontalWalls.append(arrayY)
+	for wall in mapInfo.horizontalWallsPositions:
+		horizontalWalls[wall[0]][wall[1]] = true
+	
+	for y in mapInfo.sizeY:
+		var arrayY: Array[bool] = []
+		for x in mapInfo.sizeX - 1:
+			arrayY.append(false)
+		verticalWalls.append(arrayY)
+	for wall in mapInfo.verticalWallsPositions:
+		verticalWalls[wall[0]][wall[1]] = true
+	
+	var positionsToCheck = [[mapInfo.objectsPositions[0][0] - 1, mapInfo.objectsPositions[0][1] - 1]]
+	
+	while (positionsToCheck.size() > 0):
+		var thisPos: Array = positionsToCheck.pop_front()
+		var thisPosX: int = thisPos[1]
+		var thisPosY: int = thisPos[0]
+		if thisPosY != 0 && !horizontalWalls[thisPosY - 1][thisPosX]:								#перевіряти верхню клітинку
+			if !gameField[thisPosY - 1][thisPosX]:
+				positionsToCheck.append([thisPosY - 1, thisPosX])
+				gameField[thisPosY - 1][thisPosX] = true
+		if thisPosY != mapInfo.sizeY - 1 && !horizontalWalls[thisPosY][thisPosX]:					#перевіряти нижню клітинку
+			if !gameField[thisPosY + 1][thisPosX]:
+				positionsToCheck.append([thisPosY + 1, thisPosX])
+				gameField[thisPosY + 1][thisPosX] = true
+		if thisPosX != 0 && !verticalWalls[thisPosY][thisPosX - 1]:									#перевіряти ліву клітинку
+			if !gameField[thisPosY][thisPosX - 1]:
+				positionsToCheck.append([thisPosY, thisPosX - 1])
+				gameField[thisPosY][thisPosX - 1] = true
+		if thisPosX != mapInfo.sizeX - 1 && !verticalWalls[thisPosY][thisPosX]:					#перевіряти праву клітинку
+			if !gameField[thisPosY][thisPosX + 1]:
+				positionsToCheck.append([thisPosY, thisPosX + 1])
+				gameField[thisPosY][thisPosX + 1] = true
+
 
 #func receivePlayerRecordings(actions: Array[ActionInfo]):
 	#var new_tank = playerTank.duplicate()

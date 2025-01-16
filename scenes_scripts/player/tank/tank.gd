@@ -59,6 +59,7 @@ func makeTankAlive():
 
 func resetTank():
 	resetTankAppereance()
+	$WeaponCooldown.stop()
 	tankState.movingActionPressed = 0
 	tankState.rotatingActionPressed = 0
 	tankState.shootActionPressed = false
