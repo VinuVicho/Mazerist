@@ -16,7 +16,7 @@ func toJSON() -> Dictionary:
 	## Array of obj
 	#var playersList: Array[Dictionary] = []
 	#for player in players:
-		#playersList.append(player.to_JSON())
+		#playersList.append(player.toJSON())
 	#result["players"] = playersList
 	
 	## Nullable object

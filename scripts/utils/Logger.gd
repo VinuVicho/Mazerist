@@ -16,8 +16,8 @@ static func log_error(message: String) -> void:
 	logs.append(logmsg)
 	print_rich("[color=red]" + logmsg + "[/color]")
 
-static func log_warning(message: String) -> void:
-	var logmsg = Time.get_time_string_from_system(true) + "| WARNING: " + message
+static func log_warning(message: Variant) -> void:
+	var logmsg = Time.get_time_string_from_system(true) + "| WARNING: " + str(message)
 	logs.append(logmsg)
 	print_rich("[color=yellow]" + logmsg + "[/color]")
 

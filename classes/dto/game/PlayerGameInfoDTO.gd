@@ -23,7 +23,7 @@ func toJSON() -> Dictionary:
 	## Array of obj
 	var replaysList: Array[Dictionary] = []
 	for replay in replays:
-		replaysList.append(replay.to_JSON())
+		replaysList.append(replay.toJSON())
 	result["replays"] = replaysList
 	
 	return result
