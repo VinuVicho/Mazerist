@@ -85,6 +85,7 @@ func startGame():
 		if n.is_in_group("Bullet"):
 			n.queue_free()
 	gameState = Enums.GameState.GAME
+	Logger.log("Tanks in game: " + str(playersInGame))
 
 func createMainPlayer():
 	playersInGame += 1
@@ -335,6 +336,10 @@ func prepareForGame():
 
 func tankDied(tank: PhysicsBody2D, bullet: PhysicsBody2D = null):
 	if bullet != null:
+		#Tank replay is marked dead when replay is finished, in that case don't change 
+		if (tank.get_node("TankController").actionId == -1):
+			Logger.log(tank.name + " (already finished replay) was shoot by " + bullet.name)
+			return
 		Logger.log(tank.name + " died by " + bullet.name)
 	else: 
 		Logger.log(tank.name + " died bc has no more actions")
