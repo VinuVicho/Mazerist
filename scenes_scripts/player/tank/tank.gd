@@ -72,7 +72,6 @@ func resetTank():
 	rotation = 0
 	position = startingPosition
 	rotation_degrees = startingRotation
-	Logger.log_error(startingRotation)
 func resetTankAppereance():
 	$BodyDestroyed.visible = false
 	$Body.visible = true

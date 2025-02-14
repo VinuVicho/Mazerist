@@ -197,7 +197,6 @@ func makeFieldWalls(mapInfo: MapInfo):
 		wall.name = "RightWall" + str(yId)
 		wall.position = Vector2(mapSizeX * 100 + 100, 100 * yId + 50)
 	
-	var verticalWalls: Array = mapInfo.verticalWallsPositions
 	for wallCoordinate in verticalWalls:
 		var yId = wallCoordinate[0]
 		var xId = wallCoordinate[1]
@@ -206,8 +205,6 @@ func makeFieldWalls(mapInfo: MapInfo):
 		_pathToField.add_child(wall)
 		wall.name = "VerticalWall" + str(yId) + "_" + str(xId)
 		wall.position = Vector2(200 + 100 * xId, 100 * yId + 150)
-	
-	var horizontalWalls: Array = mapInfo.horizontalWallsPositions
 	for wallCoordinate in horizontalWalls:
 		var yId = wallCoordinate[0]
 		var xId = wallCoordinate[1]

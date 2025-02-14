@@ -20,17 +20,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_76agj")
 
-[node name="MainMenuService" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MainMenuService" type="CanvasLayer" parent="."]
 script = ExtResource("2_0fmgp")
 
 [node name="FullMainMenu" type="Control" parent="MainMenuService"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -65,7 +59,7 @@ text = "Options"
 
 [node name="ExitButton" type="Button" parent="MainMenuService/FullMainMenu/MainMenu"]
 layout_mode = 2
-text = "Exit Windows"
+text = "Exit"
 
 [node name="LogOutButton" type="Button" parent="MainMenuService/FullMainMenu"]
 custom_minimum_size = Vector2(112, 0)
@@ -81,7 +75,7 @@ text = "Log out"
 
 [node name="MultiplayerMenu" type="Control" parent="MainMenuService"]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -419,7 +413,7 @@ text = "Back"
 
 [node name="LoginMenu" type="Control" parent="MainMenuService"]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

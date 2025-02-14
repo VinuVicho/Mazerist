@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 func _on_exit_button_pressed() -> void:
-	print("Exit game.... and windows")
+	get_tree().quit() 
 
 func changeGameState(state: Enums.ProgramState):
 	$MainMenuService.visible = state == Enums.ProgramState.MAIN_MENU
