@@ -15,7 +15,6 @@ script = ExtResource("1_01oie")
 one_shot = true
 
 [node name="GameCamera" type="Camera2D" parent="."]
-anchor_mode = 0
 enabled = false
 
 [connection signal="timeout" from="TimerOfGameEnd" to="." method="_on_timer_of_game_end_timeout"]

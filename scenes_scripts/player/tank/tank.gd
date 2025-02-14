@@ -15,6 +15,7 @@ var tankState: TankState = TankState.new()
 
 # Starting position
 var startingPosition: Vector2
+var startingRotation: float			#In degrees
 
 func _init() -> void:
 	tankState.current_speed = speed
@@ -70,6 +71,8 @@ func resetTank():
 	
 	rotation = 0
 	position = startingPosition
+	rotation_degrees = startingRotation
+	Logger.log_error(startingRotation)
 func resetTankAppereance():
 	$BodyDestroyed.visible = false
 	$Body.visible = true

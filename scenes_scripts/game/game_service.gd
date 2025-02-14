@@ -16,6 +16,7 @@ var artefactScene = preload("res://scenes/field/objects/artefact.tscn").instanti
 var playerBaseScene = preload("res://scenes/field/objects/base.tscn").instantiate()
 
 var thisGameId: int = 0
+var thisGame: GameDTO
 var thisPlayerInfo: PlayerGameInfoDto
 var thisPlayerStartingPosition: Array
 var thisPlayerTank: BasicTank
@@ -48,6 +49,7 @@ func loadGame(game: GameDTO) -> bool:
 	cleanField()
 	Global.gameUI.resetUI()
 	thisGameId = game.gameId
+	thisGame = game
 	setCameraScale(game.field.sizeX, game.field.sizeY)
 	calculateField(game.field)
 	hideNonField(game.field)
@@ -93,8 +95,15 @@ func createMainPlayer():
 	new_tank.name = "Player"
 	new_tank.modulate = Color.from_string(thisPlayerInfo.color, Color.WHITE)
 	new_tank.get_node("TankController").set_script(load("res://scenes_scripts/player/player_control/singlePlayerControl.gd"))
-	new_tank.position = Vector2(50 + thisPlayerStartingPosition[1] * 100, 50 + thisPlayerStartingPosition[0] * 100)
-	new_tank.startingPosition = Vector2(50 + thisPlayerStartingPosition[1] * 100, 50 + thisPlayerStartingPosition[0] * 100)
+	#StartingPosition
+	var pos = Vector2(50 + thisPlayerStartingPosition[1] * 100, 50 + thisPlayerStartingPosition[0] * 100)
+	new_tank.position = pos
+	new_tank.startingPosition = pos
+	#StartingRotation
+	var rot = rad_to_deg(Vector2((thisGame.field.sizeX+2)*50, (thisGame.field.sizeY+2)*50).angle_to_point(new_tank.startingPosition)) - 90
+	new_tank.rotation_degrees = rot
+	new_tank.startingRotation = rot
+	
 	_pathToPlayers.add_child(new_tank)
 	thisPlayerTank = new_tank
 	new_tank.inGamePlayerId = thisPlayerInfo.inGamePlayerId
@@ -109,6 +118,7 @@ func setCameraScale(sizeX: int, sizeY: int):
 		$GameCamera.zoom = Vector2(scaleForY, scaleForY)
 	else:
 		$GameCamera.zoom = Vector2(scaleForX, scaleForX)
+	$GameCamera.position = Vector2((sizeX+2)*50, (sizeY+2)*50)
 	$GameCamera.enabled = true
 
 func createPlayersDictionary(players: Array[PlayerGameInfoDto]) -> Dictionary:
@@ -308,8 +318,14 @@ func createPlayerRecording(playerInfo: PlayerGameInfoDto, actions: Array, tankNa
 	new_tank.inGamePlayerId = playerInfo.inGamePlayerId
 	new_tank.modulate = Color.from_string(playerInfo.color, Color.WHITE)
 	new_tank.get_node("TankController").set_script(load("res://scripts/repeater_control/actionsRepeaterControl.gd"))
+	#StartingPosition
 	new_tank.position = Vector2(50 + thisPlayerStartingPosition[1] * 100, 50 + thisPlayerStartingPosition[0] * 100)
 	new_tank.startingPosition = Vector2(50 + thisPlayerStartingPosition[1] * 100, 50 + thisPlayerStartingPosition[0] * 100)
+	#StartingRotation
+	var rot = rad_to_deg(Vector2((thisGame.field.sizeX+2)*50, (thisGame.field.sizeY+2)*50).angle_to_point(new_tank.startingPosition)) - 90
+	new_tank.rotation_degrees = rot
+	new_tank.startingRotation = rot
+	
 	_pathToPlayers.add_child(new_tank)
 	new_tank.get_node("TankController").createTimers(actions)
 
