@@ -35,7 +35,7 @@ layout_mode = 2
 layout_mode = 2
 text = "My Profile"
 
-[node name="Margin" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
+[node name="MarginAfterMyProfile" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
@@ -43,30 +43,36 @@ layout_mode = 2
 layout_mode = 2
 text = "Search filters:"
 
-[node name="SearchForPlayersCheck" type="CheckButton" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
 layout_mode = 2
-text = "Players"
 
-[node name="SearchNameEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
+[node name="SearchForLabel" type="Label" parent="VBoxContainer/HBoxContainer/MultiplayerMenu/HBoxContainer"]
 layout_mode = 2
-placeholder_text = "Search by name"
-editable = false
+text = "Search for "
 
-[node name="MyGamesFilter" type="CheckBox" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
+[node name="SearchForOptions" type="OptionButton" parent="VBoxContainer/HBoxContainer/MultiplayerMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+selected = 2
+allow_reselect = true
+popup/item_0/text = "Lobbies"
+popup/item_0/id = 0
+popup/item_1/text = "Players"
+popup/item_1/id = 1
+popup/item_2/text = "Games"
+popup/item_2/id = 2
+
+[node name="WithMeCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
 layout_mode = 2
 button_pressed = true
-text = "My games"
-
-[node name="InLobbyStatusFilter" type="CheckBox" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
-layout_mode = 2
-disabled = true
-text = "In lobby status"
+text = "With me"
 
 [node name="SendSearchButton" type="Button" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
 layout_mode = 2
 text = "Search"
 
-[node name="Margin2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
+[node name="MarginAfterSearch" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
@@ -75,19 +81,20 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Create new Lobby"
 
-[node name="Margin3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
+[node name="MarginAfterCreateNewLobby" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="HideFoundResults" type="CheckButton" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
+visible = false
 layout_mode = 2
 text = "Hide found results"
 
-[node name="Margin4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
+[node name="MarginAtTheEndOfFilterMenu" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+[node name="VSeparatorAfterFilterMenu" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
@@ -99,7 +106,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 text = "Found:"
 
-[node name="Margin" type="MarginContainer" parent="VBoxContainer/HBoxContainer/ListColumn"]
+[node name="MarginBeforeList" type="MarginContainer" parent="VBoxContainer/HBoxContainer/ListColumn"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
@@ -125,7 +132,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 text = "One of Games"
 
-[node name="Margin2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/ListColumn"]
+[node name="MarginAfterList" type="MarginContainer" parent="VBoxContainer/HBoxContainer/ListColumn"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
@@ -150,7 +157,7 @@ text = "Lobby name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer"]
+[node name="MarginAfterLobbyName" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
@@ -158,7 +165,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginLeft" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
@@ -167,7 +174,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginAfterAnotherLobbyThings" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
@@ -315,7 +322,7 @@ popup/item_2/id = 2
 layout_mode = 2
 text = "Update lobby"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="MarginBelowLobbySettings" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
@@ -336,7 +343,7 @@ max_length = 20
 layout_mode = 2
 text = "Update password"
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="MarginBelowPasswordChanger" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
@@ -353,7 +360,7 @@ script = ExtResource("4_qsvbc")
 layout_mode = 2
 text = "Update my color"
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
+[node name="MarginBelowColorPicker" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
@@ -366,7 +373,7 @@ text = "Become spectator"
 layout_mode = 2
 text = "Become player"
 
-[node name="MarginContainer3" type="VSeparator" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparatorBeforePlayers" type="VSeparator" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
@@ -404,7 +411,7 @@ text = "OneOfThePlayersName"
 layout_mode = 2
 text = "OneOfThePlayersName"
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
+[node name="MarginAfterPlayerBeforeSpectators" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbyPlayersContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
@@ -446,7 +453,7 @@ text = "View Game"
 layout_mode = 2
 text = "Start game"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginForLobbyRight" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
@@ -476,7 +483,7 @@ size_flags_horizontal = 4
 disabled = true
 text = "Join as spectator"
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer"]
+[node name="MarginForLobbyBottom" type="MarginContainer" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
@@ -501,6 +508,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 
 [node name="PlayerGamesButton" type="Button" parent="VBoxContainer/HBoxContainer/PlayerProfile/ActionsWithPlayer"]
+visible = false
 layout_mode = 2
 text = "His games"
 
@@ -535,7 +543,7 @@ size_flags_stretch_ratio = 3.0
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer"]
+[node name="MarginLeft" type="MarginContainer" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
@@ -552,7 +560,7 @@ text = "Create new Lobby"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginTop" type="MarginContainer" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
@@ -693,7 +701,7 @@ popup/item_1/disabled = true
 popup/item_2/text = "Corners"
 popup/item_2/id = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginBellowLobbySettings" type="MarginContainer" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
@@ -702,14 +710,11 @@ layout_mode = 2
 size_flags_vertical = 10
 text = "Create"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginBottom" type="MarginContainer" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer"]
+[node name="MarginRight" type="MarginContainer" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
@@ -722,7 +727,7 @@ size_flags_stretch_ratio = 3.0
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer"]
+[node name="MarginLeft" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 
@@ -730,7 +735,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginTop" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
@@ -741,7 +746,7 @@ theme_type_variation = &"HeaderLarge"
 text = "Game id: "
 horizontal_alignment = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginTopAfterGameId" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
@@ -778,11 +783,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "Go to replay"
 
-[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginBottom" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer"]
+[node name="MarginRight" type="MarginContainer" parent="VBoxContainer/HBoxContainer/GameInfoContainer/HBoxContainer"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 
@@ -790,12 +795,12 @@ layout_mode = 2
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginBottom" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MultiplayerMenu/MyProfileButton" to="." method="_on_my_profile_button_pressed"]
-[connection signal="toggled" from="VBoxContainer/HBoxContainer/MultiplayerMenu/SearchForPlayersCheck" to="." method="_on_search_players_toggled"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/MultiplayerMenu/HBoxContainer/SearchForOptions" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MultiplayerMenu/SendSearchButton" to="." method="_on_send_search_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MultiplayerMenu/OpenCreateLobbyWindowButton" to="." method="_on_open_create_lobby_window_button_pressed"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/MultiplayerMenu/HideFoundResults" to="." method="_on_hide_found_results_toggled"]

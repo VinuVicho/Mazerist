@@ -254,6 +254,17 @@ func login_player(playerLoginRequest: PlayerLoginRequest) -> bool:
 	Logger.log_error("Auth was unsuccessful " + str(responce.status))
 	return false
 
+func logOut():
+	var i: int = 0
+	for header in headers:
+		if (header.begins_with("Auth")):
+			headers.remove_at(i)
+			authentinticated = false
+			Logger.log("Player loggined out")
+			return
+		else: i = i + 1
+	
+
 #endregion
 
 #endregion
