@@ -14,11 +14,11 @@ func _to_string() -> String:
 
 func toJSON() -> Dictionary:
 	var resultDictionary = {
+		"gameId": gameId,
 		"gameTurn": gameTurn,
 		"fieldId": fieldId,
 		"gameFinished": gameFinished,
 		"gameCreatorId": gameCreatorId,
-		"gameId": gameId,
 	}
 	
 	var playersList: Array[Dictionary] = []
@@ -39,7 +39,6 @@ static func toObject(json: Dictionary) -> GameDTO:
 	result.fieldId = json["fieldId"]
 	result.gameCreatorId = json["gameCreatorId"]
 	result.gameFinished = json["gameFinished"]
-	result.gameId = json["gameId"]
 	result.gameTurn = json["gameTurn"]
 	
 	result.players = []

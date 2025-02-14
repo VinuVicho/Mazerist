@@ -49,10 +49,6 @@ func _on_my_profile_button_pressed() -> void:
 	_on_send_search_button_pressed()
 	#TODO: show his games in searchResult (probably)
 
-func _on_search_players_toggled(toggled_on: bool) -> void:
-	$VBoxContainer/HBoxContainer/MultiplayerMenu/MyGamesFilter.disabled = toggled_on
-	$VBoxContainer/HBoxContainer/MultiplayerMenu/InLobbyStatusFilter.disabled = toggled_on
-
 func _on_join_button_pressed() -> void:
 	var joinRequest := LobbyRequest.new()
 	joinRequest.lobbyId = currentDisplayerId
@@ -67,7 +63,27 @@ func _on_send_search_button_pressed() -> void:
 	for nodeItem in list.get_children():
 		nodeItem.queue_free()
 	
-	if $VBoxContainer/HBoxContainer/MultiplayerMenu/SearchForPlayersCheck.button_pressed:
+	#Getting Games
+	if $VBoxContainer/HBoxContainer/MultiplayerMenu/HBoxContainer/SearchForOptions.selected == 2:
+		var gamesList: Array[GameWithStatusAction]
+		if $VBoxContainer/HBoxContainer/MultiplayerMenu/WithMeCheckBox.button_pressed:
+			gamesList = await webService.getMyGames()
+		else: 
+			gamesList = await webService.getAllGames()
+		
+		for game in gamesList:
+			var newButton = Button.new()
+			newButton.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+			newButton.text = str(game.gameId)
+			newButton.name = "Game" + str(game.gameId)
+			list.add_child(newButton)
+			newButton.pressed.connect(get_and_show_game.bind(game.gameId))
+			paint_game_button(game, newButton)
+		listHolder = Enums.Holder.GAME
+		return
+	
+	#Getting PLayers
+	if $VBoxContainer/HBoxContainer/MultiplayerMenu/HBoxContainer/SearchForOptions.selected == 1:
 		var playerList: Array[PlayerDTO] = await Global.webService.getAllPlayers()
 		if playerList.size() == 0: Logger.log_error("empty responce")
 		
@@ -85,7 +101,7 @@ func _on_send_search_button_pressed() -> void:
 	#Getting Lobbies
 	var resultList: Array[LobbyDTO] 
 	
-	if $VBoxContainer/HBoxContainer/MultiplayerMenu/MyGamesFilter.button_pressed:
+	if $VBoxContainer/HBoxContainer/MultiplayerMenu/WithMeCheckBox.button_pressed:
 		resultList = await Global.webService.getMyLobbies()
 	else: resultList = await Global.webService.getAllLobbies()
 	if resultList.size() == 0: Logger.log_error("empty responce")
@@ -97,12 +113,39 @@ func _on_send_search_button_pressed() -> void:
 		newButton.name = "Lobby" + str(lobby.lobbyId)
 		list.add_child(newButton)
 		newButton.pressed.connect(get_and_display_lobby.bind(lobby.lobbyId))
-		if lobby.hasPassword:
-			newButton.self_modulate = Color.FIREBRICK
+		paint_lobby_button(lobby, newButton)
 	listHolder = Enums.Holder.LOBBY
 	
 	#TODO: perform search
 	pass # Replace with function body.
+func paint_lobby_button(lobby: LobbyDTO, newButton: Button) -> void:
+	match lobby.lobbyStatus:
+		Enums.LobbyStatus.GAME:
+			newButton.self_modulate = Color.LIGHT_BLUE
+			newButton.tooltip_text = "Game in this lobby already started"
+		Enums.LobbyStatus.LOBBY:
+			if lobby.hasPassword:
+				newButton.self_modulate = Color.FIREBRICK
+				newButton.tooltip_text = "This lobby is protected by password"
+		_: 
+			newButton.self_modulate = Color.RED
+			newButton.tooltip_text = "Hmm, very strange lobby status"
+func paint_game_button(gameDto: GameWithStatusAction, newButton: Button) -> void:
+	match gameDto.statusAction:
+		Enums.GameStatusAction.MY_TURN: 
+			newButton.self_modulate = Color.SEA_GREEN
+			newButton.tooltip_text = "It's your turn!"
+		Enums.GameStatusAction.END_TURN: 
+			if gameDto.gameFinished:
+				newButton.self_modulate = Color.FIREBRICK
+				newButton.tooltip_text = "This game is finished"
+			else: 
+				if (gameDto.gameCreatorId == Global.playerId):
+					newButton.self_modulate = Color.LIGHT_GREEN
+					newButton.tooltip_text = "You have to verify this game replay"
+				else: 
+					newButton.self_modulate = Color.LIGHT_YELLOW
+					newButton.tooltip_text = "Waiting for game owner to verify this game"
 
 func get_and_display_player(playerId: int) -> void:
 	var player: PlayerDTO = await webService.getPlayerProfile(playerId)
@@ -374,3 +417,7 @@ func view_button_pressed(gameId: int) -> void:
 		return
 	
 	Logger.log_error("Loading game failed")
+
+
+func _on_option_button_item_selected(index: int) -> void:
+	$VBoxContainer/HBoxContainer/MultiplayerMenu/WithMeCheckBox.disabled = index == 1

@@ -34,19 +34,19 @@ func endGameTurn(scoresDto: ScoresDto) -> GameDTO:
 	Logger.log_error("Sending scores failed: " + str(responce.status))
 	return
 
-func getAllGames() -> Array[GameDTO]:
+func getAllGames() -> Array[GameWithStatusAction]:
 	const url = "Game/all"
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
-		return GameDTO.toListOfObjects(responce.body_as_json())
+		return GameWithStatusAction.toListOfObjects(responce.body_as_json())
 	Logger.log_error("Getting all games failed: " + str(responce.status))
 	return []
 
-func getPlayerGames() -> Array[GameDTO]:
+func getMyGames() -> Array[GameWithStatusAction]:
 	const url = "Game/my"
 	var responce: HTTPResult = await send_simle_httpRequest(url, HTTPClient.METHOD_GET)
 	if responce.success() && !responce.status_err():
-		return GameDTO.toListOfObjects(responce.body_as_json())
+		return GameWithStatusAction.toListOfObjects(responce.body_as_json())
 	Logger.log_error("Getting my games failed: " + str(responce.status))
 	return []
 

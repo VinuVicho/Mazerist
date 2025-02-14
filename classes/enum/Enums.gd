@@ -4,6 +4,7 @@ enum Holder {
 	NOT_ASSIGNED,
 	PLAYER, 
 	LOBBY,
+	GAME,
 }
 
 enum LobbyStatus {
@@ -39,4 +40,10 @@ enum ActionType {
 	MOVE_BACKWARDS = 6, 
 	STOP_MOVING = 7,
 	SHOOT = 8,
+}
+
+enum GameStatusAction {
+	NOT_MY_ACTION = 0,
+	MY_TURN = 1,
+	END_TURN = 2,
 }
