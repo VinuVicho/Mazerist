@@ -27,7 +27,7 @@ func _ready():
 	print(createdMap.toJSON())
 
 
-func generateDefaultField(newRequest: FieldRequestForGen = FieldRequestForGen.new()) -> MapInfo:			#Square, +-0_000_xxx_yyy, - = horizontal?
+func generateDefaultField(newRequest: FieldRequestForGen) -> MapInfo:			#Square, +-0_000_xxx_yyy, - = horizontal?
 	already_generating = true
 	request = newRequest
 	validateInputRequest()
@@ -118,5 +118,4 @@ func calculateSize() -> void:
 	if (request.amountOfPositions > a*b): calculateSize()
 
 static func validateInputRequest() -> void:
-	#TODO: validate
 	pass

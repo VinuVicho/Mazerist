@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes_scripts/Interface/MultiplayerMainScreen.gd" id="1_q7vwc"]
 [ext_resource type="Theme" uid="uid://hijfoh1qr26t" path="res://textures/theme/mainScene.tres" id="2_rc7i0"]
-[ext_resource type="Texture2D" uid="uid://du6718qkkw12g" path="res://icon.svg" id="3_yyhql"]
+[ext_resource type="Texture2D" uid="uid://du6718qkkw12g" path="res://textures/icons/icon-godo.svg" id="3_yyhql"]
 [ext_resource type="Script" path="res://test/colorPickerEditor/colorPicketButton.gd" id="4_qsvbc"]
 
 [node name="MultiplayerMainScreen" type="PanelContainer"]
@@ -39,7 +39,7 @@ text = "My Profile"
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
+[node name="SearchFiltersLabel" type="Label" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
 layout_mode = 2
 text = "Search filters:"
 
@@ -54,7 +54,7 @@ text = "Search for "
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 3
-selected = 2
+selected = 0
 allow_reselect = true
 popup/item_0/text = "Lobbies"
 popup/item_0/id = 0
@@ -65,7 +65,6 @@ popup/item_2/id = 2
 
 [node name="WithMeCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
 layout_mode = 2
-button_pressed = true
 text = "With me"
 
 [node name="SendSearchButton" type="Button" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
@@ -93,6 +92,13 @@ text = "Hide found results"
 [node name="MarginAtTheEndOfFilterMenu" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+
+[node name="MenuInfoTestLabel" type="Label" parent="VBoxContainer/HBoxContainer/MultiplayerMenu"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Ну тут я хз як можна покращити, відкритий до побажань.
+Планую зробити пошук по імені, як мінімум"
+autowrap_mode = 2
 
 [node name="VSeparatorAfterFilterMenu" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
@@ -130,7 +136,8 @@ size_flags_horizontal = 3
 
 [node name="Game1" type="Button" parent="VBoxContainer/HBoxContainer/ListColumn/ListContainer/List"]
 layout_mode = 2
-text = "One of Games"
+disabled = true
+text = "Your search options will be here"
 
 [node name="MarginAfterList" type="MarginContainer" parent="VBoxContainer/HBoxContainer/ListColumn"]
 custom_minimum_size = Vector2(0, 10)
@@ -141,6 +148,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
 [node name="LobbyInfoContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -270,7 +278,7 @@ text = "Number of players: "
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
-max_value = 9.0
+max_value = 4.0
 value = 2.0
 rounded = true
 
@@ -281,7 +289,7 @@ text = "Walls percentage: "
 [node name="FieldWallsPercentageSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-value = 75.0
+value = 60.0
 rounded = true
 
 [node name="FieldGenerationTypeLabel" type="Label" parent="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/LobbyRequestContainer"]
@@ -534,8 +542,13 @@ script = ExtResource("4_qsvbc")
 layout_mode = 2
 text = "Update"
 
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PlayerProfile"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Тут можна буде дивитись скіни гравця, а також їх вибирати
+Теж поки що в розробці"
+
 [node name="CreateNewLobbyContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -584,6 +597,7 @@ text = "Lobby password: "
 [node name="LobbyPasswordEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+placeholder_text = "Leave empty to make open lobby"
 max_length = 20
 
 [node name="FieldMinSizeXLabel" type="Label" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
@@ -595,7 +609,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
 max_value = 30.0
-value = 3.0
+value = 5.0
 rounded = true
 
 [node name="FieldMinSizeYLabel" type="Label" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
@@ -607,7 +621,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
 max_value = 30.0
-value = 3.0
+value = 5.0
 rounded = true
 
 [node name="FieldMaxSizeXLabel" type="Label" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
@@ -619,7 +633,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
 max_value = 30.0
-value = 30.0
+value = 20.0
 rounded = true
 
 [node name="FieldMaxSizeYLabel" type="Label" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
@@ -631,7 +645,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
 max_value = 30.0
-value = 30.0
+value = 20.0
 rounded = true
 
 [node name="FieldSeedLabel" type="Label" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
@@ -653,7 +667,7 @@ text = "Number of players: "
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
-max_value = 9.0
+max_value = 4.0
 value = 2.0
 rounded = true
 
@@ -664,7 +678,7 @@ text = "Walls percentage: "
 [node name="FieldWallsPercentageSelector" type="SpinBox" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-value = 75.0
+value = 40.0
 rounded = true
 
 [node name="FieldGenerationTypeLabel" type="Label" parent="VBoxContainer/HBoxContainer/CreateNewLobbyContainer/HBoxContainer/VBoxContainer/LobbyRequestContainer"]
@@ -675,7 +689,7 @@ text = "Field generation type: "
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 3
-selected = 0
+selected = 2
 popup/item_0/text = "Any"
 popup/item_0/id = 0
 popup/item_1/text = "Default"
@@ -691,7 +705,7 @@ text = "Players positions type: "
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 3
-selected = 0
+selected = 2
 popup/item_0/text = "Any"
 popup/item_0/id = 0
 popup/item_0/disabled = true
@@ -807,8 +821,6 @@ layout_mode = 2
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/UpdateLobbyInfoButton" to="." method="_on_update_lobby_info_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/UpdatePasswordButton" to="." method="_on_update_password_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/UpdateMyColorInLobbyButton" to="." method="_on_update_my_color_in_lobby_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/BecomeSpectatorButton" to="." method="_on_change_team_button_pressed" binds= [0]]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/HBoxContainer/LobbySettings/BecomePlayerButton" to="." method="_on_change_team_button_pressed" binds= [1]]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LobbyInfoContainer/VBoxContainer/VBoxContainer/JoinAsSpectatorButton" to="." method="_on_join_as_spectator_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PlayerProfile/GridContainer/UpdateProfileButton" to="." method="_on_update_profile_button_pressed"]

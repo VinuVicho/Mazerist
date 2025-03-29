@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://hoinjo7b20b6"]
+
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu_game.gd" id="1_k6g1y"]
+
+[sub_resource type="Curve2D" id="Curve2D_q2ge0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 132, 92, 0, 0, 0, 0, 90, 187, 0, 0, 0, 0, 201, 229, 0, 0, 0, 0, 311, 157, 0, 0, 0, 0, 367, 97, 0, 0, 0, 0, 262, 43)
+}
+point_count = 6
+
+[node name="MainMenuGame" type="Node2D"]
+script = ExtResource("1_k6g1y")
+
+[node name="Field" type="Node2D" parent="."]
+
+[node name="MenuCamera" type="Camera2D" parent="."]
+visible = false
+
+[node name="PlayerContainer" type="Node2D" parent="."]
+
+[node name="PathForMazeSolver" type="Path2D" parent="PlayerContainer"]
+curve = SubResource("Curve2D_q2ge0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PlayerContainer/PathForMazeSolver"]
+position = Vector2(132, 92)
+rotation = 1.98707
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

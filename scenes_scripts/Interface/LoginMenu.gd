@@ -17,7 +17,7 @@ func perform_LoginRequest():
 	loginRequest.password = $PanelContainer/VBoxContainer/PasswordContainer/TextEditPassword.text
 	var isSuccessfull: bool = await Global.webService.login_player(loginRequest)
 	if !isSuccessfull:
-		Logger.log_error("Login not successful")
+		Logger.log_warning("Login not successful")
 		return
 	get_parent()._on_multiplayer_button_pressed()
 
@@ -29,6 +29,18 @@ func perform_CreateAccountRequest():
 	createRequest.color = $PanelContainer/VBoxContainer/ColorPickerContainer/ColorPickerButton.color.to_html(false)
 	var result: PlayerDTO = await Global.webService.register_player(createRequest)
 	if (result == null): 
-		Logger.log_error("There was an error creating account")
+		Logger.log_warning("There was an error creating account")
 		return
 	perform_LoginRequest()
+
+
+func _on_text_edit_password_text_submitted(_new_text: String) -> void:
+	if $PanelContainer/VBoxContainer2/AlreadyHaveAccountCheckBox.button_pressed:
+		perform_LoginRequest()
+		return
+	$PanelContainer/VBoxContainer/UsernameContainer/TextEditUsername.grab_focus()
+
+
+func _on_text_edit_login_text_submitted(_new_text: String) -> void:
+	$PanelContainer/VBoxContainer/PasswordContainer/TextEditPassword.grab_focus()
+

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpaw8chgm8gh7"]
+
+[ext_resource type="Script" path="res://scenes_scripts/game/game_service_animated.gd" id="1_moy1u"]
+
+[sub_resource type="Animation" id="Animation_5qg6c"]
+resource_name = "GameAnimation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2k5pf"]
+_data = {
+"GameAnimation": SubResource("Animation_5qg6c")
+}
+
+[node name="GameServiceAnimated" type="Node2D"]
+script = ExtResource("1_moy1u")
+
+[node name="Field" type="Node2D" parent="."]
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="TimerOfGameEnd" type="Timer" parent="."]
+one_shot = true
+
+[node name="GameCamera" type="Camera2D" parent="."]
+visible = false
+enabled = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2k5pf")
+}

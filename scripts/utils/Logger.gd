@@ -10,8 +10,8 @@ static func log(message: Variant) -> void:
 static func get_logs() -> PackedStringArray:
 	return logs 
 
-static func log_error(message: Variant) -> void:
-	Global.errorDisplayer.displayError(str(message))
+static func log_error(message: Variant, isHighPriority: bool = false) -> void:
+	Global.errorDisplayer.displayError(str(message), isHighPriority)
 	var logmsg = Time.get_time_string_from_system(true) + "| ERROR: " + str(message)
 	logs.append(logmsg)
 	print_rich("[color=red]" + logmsg + "[/color]")

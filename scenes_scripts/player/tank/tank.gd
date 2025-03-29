@@ -7,7 +7,7 @@ var inGamePlayerId: int = -1
 @export var speed: int = 200;
 @export var moveBackwardsRatio: float = 0.5;
 @export var health: int = 1;
-@export var rotation_speed: float = 2
+@export var rotation_speed: float = 3
 @export var amount_of_bullets = 3
 
 var disabled := false

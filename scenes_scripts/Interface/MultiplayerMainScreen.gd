@@ -2,6 +2,7 @@ extends PanelContainer
 
 @onready var webService: WebService = Global.webService
 var currentDisplayerId: int = 0
+var to_display_hashId: int = 0									#LastClickId. Assign before request, and match it after receiving
 var holder: Enums.Holder = Enums.Holder.NOT_ASSIGNED			#That one detailed info
 var listHolder: Enums.Holder = Enums.Holder.NOT_ASSIGNED		#List of search results. Probably not needed
 
@@ -39,6 +40,10 @@ func _on_my_profile_button_pressed() -> void:
 	hide_main_container()
 	
 	var playerProfile: PlayerDTO = await webService.getMyProfile()
+	if playerProfile == null:
+		Logger.log_error("Your profile not found...")
+		Global.interfaceService.exit_multiplayer()
+		return
 	Global.playerId = playerProfile.playerId
 	$VBoxContainer/HBoxContainer/PlayerProfile/PlayerName.text = playerProfile.username
 	$VBoxContainer/HBoxContainer/PlayerProfile/GridContainer/ColorPickerButton.color = Color.from_string(playerProfile.color, Color.WHITE)
@@ -63,29 +68,12 @@ func _on_send_search_button_pressed() -> void:
 	for nodeItem in list.get_children():
 		nodeItem.queue_free()
 	
-	#Getting Games
-	if $VBoxContainer/HBoxContainer/MultiplayerMenu/HBoxContainer/SearchForOptions.selected == 2:
-		var gamesList: Array[GameWithStatusAction]
-		if $VBoxContainer/HBoxContainer/MultiplayerMenu/WithMeCheckBox.button_pressed:
-			gamesList = await webService.getMyGames()
-		else: 
-			gamesList = await webService.getAllGames()
-		
-		for game in gamesList:
-			var newButton = Button.new()
-			newButton.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-			newButton.text = str(game.gameId)
-			newButton.name = "Game" + str(game.gameId)
-			list.add_child(newButton)
-			newButton.pressed.connect(get_and_show_game.bind(game.gameId))
-			paint_game_button(game, newButton)
-		listHolder = Enums.Holder.GAME
-		return
+	var priorityDictionary: Dictionary = {0: [], 1: [], 2: []}
 	
 	#Getting PLayers
 	if $VBoxContainer/HBoxContainer/MultiplayerMenu/HBoxContainer/SearchForOptions.selected == 1:
 		var playerList: Array[PlayerDTO] = await Global.webService.getAllPlayers()
-		if playerList.size() == 0: Logger.log_error("empty responce")
+		if playerList.size() == 0: Logger.log_warning("empty responce")
 		
 		for player in playerList:
 			var newButton = Button.new()
@@ -98,54 +86,87 @@ func _on_send_search_button_pressed() -> void:
 		listHolder = Enums.Holder.PLAYER
 		return
 	
-	#Getting Lobbies
-	var resultList: Array[LobbyDTO] 
+	#region Getting Games
+	if $VBoxContainer/HBoxContainer/MultiplayerMenu/HBoxContainer/SearchForOptions.selected == 2:
+		var gamesList: Array[GameWithStatusAction]
+		if $VBoxContainer/HBoxContainer/MultiplayerMenu/WithMeCheckBox.button_pressed:
+			gamesList = await webService.getMyGames()
+		else: 
+			gamesList = await webService.getAllGames()
+		
+		for game in gamesList:
+			var newButton = Button.new()
+			newButton.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+			newButton.text = str(game.gameId)
+			newButton.name = "Game" + str(game.gameId)
+			newButton.pressed.connect(get_and_show_game.bind(game.gameId))
+			match game.statusAction:
+				Enums.GameStatusAction.MY_TURN: 
+					newButton.self_modulate = Color.SEA_GREEN
+					newButton.tooltip_text = "It's your turn!"
+					priorityDictionary[0].append(newButton)
+				Enums.GameStatusAction.END_TURN: 
+					if game.gameFinished:
+						newButton.self_modulate = Color.FIREBRICK
+						newButton.tooltip_text = "This game is finished"
+						priorityDictionary[2].append(newButton)
+					else: 
+						if (game.gameCreatorId == Global.playerId):
+							newButton.self_modulate = Color.LIGHT_GREEN
+							newButton.tooltip_text = "You have to verify this game replay"
+							priorityDictionary[0].append(newButton)
+						else: 
+							newButton.self_modulate = Color.LIGHT_YELLOW
+							newButton.tooltip_text = "Waiting for game owner to verify this game"
+							priorityDictionary[1].append(newButton)
+		listHolder = Enums.Holder.GAME
+		#Adding to the list by button priority
+		for priorityArray in priorityDictionary:
+			for newButton in priorityDictionary[priorityArray]:
+				list.add_child(newButton)
+		return
+	#endregion
 	
+	#region Getting Lobbies
+	var resultList: Array[LobbyDTO] 
 	if $VBoxContainer/HBoxContainer/MultiplayerMenu/WithMeCheckBox.button_pressed:
 		resultList = await Global.webService.getMyLobbies()
-	else: resultList = await Global.webService.getAllLobbies()
-	if resultList.size() == 0: Logger.log_error("empty responce")
+	else: 
+		resultList = await Global.webService.getAllLobbies()
+	if resultList.size() == 0: Logger.log_warning("empty responce")
 	
 	for lobby in resultList:
 		var newButton = Button.new()
 		newButton.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		newButton.text = lobby.lobbyName
 		newButton.name = "Lobby" + str(lobby.lobbyId)
-		list.add_child(newButton)
+		
 		newButton.pressed.connect(get_and_display_lobby.bind(lobby.lobbyId))
-		paint_lobby_button(lobby, newButton)
+		match lobby.lobbyStatus:
+			Enums.LobbyStatus.GAME:
+				newButton.self_modulate = Color.LIGHT_BLUE
+				newButton.tooltip_text = "Game in this lobby already started"
+				priorityDictionary[2].append(newButton)
+			Enums.LobbyStatus.LOBBY:
+				if lobby.hasPassword:
+					newButton.self_modulate = Color.FIREBRICK
+					newButton.tooltip_text = "This lobby is protected by password"
+					priorityDictionary[1].append(newButton)
+				else:
+					priorityDictionary[0].append(newButton)
+			_: 
+				newButton.self_modulate = Color.RED
+				newButton.tooltip_text = "Hmm, very strange lobby status"
+				priorityDictionary[2].append(newButton)
 	listHolder = Enums.Holder.LOBBY
+	#endregion
+	
+	#Adding to the list by button priority
+	for priorityArray in priorityDictionary:
+		for newButton in priorityDictionary[priorityArray]:
+			list.add_child(newButton)
 	
 	#TODO: perform search
-	pass # Replace with function body.
-func paint_lobby_button(lobby: LobbyDTO, newButton: Button) -> void:
-	match lobby.lobbyStatus:
-		Enums.LobbyStatus.GAME:
-			newButton.self_modulate = Color.LIGHT_BLUE
-			newButton.tooltip_text = "Game in this lobby already started"
-		Enums.LobbyStatus.LOBBY:
-			if lobby.hasPassword:
-				newButton.self_modulate = Color.FIREBRICK
-				newButton.tooltip_text = "This lobby is protected by password"
-		_: 
-			newButton.self_modulate = Color.RED
-			newButton.tooltip_text = "Hmm, very strange lobby status"
-func paint_game_button(gameDto: GameWithStatusAction, newButton: Button) -> void:
-	match gameDto.statusAction:
-		Enums.GameStatusAction.MY_TURN: 
-			newButton.self_modulate = Color.SEA_GREEN
-			newButton.tooltip_text = "It's your turn!"
-		Enums.GameStatusAction.END_TURN: 
-			if gameDto.gameFinished:
-				newButton.self_modulate = Color.FIREBRICK
-				newButton.tooltip_text = "This game is finished"
-			else: 
-				if (gameDto.gameCreatorId == Global.playerId):
-					newButton.self_modulate = Color.LIGHT_GREEN
-					newButton.tooltip_text = "You have to verify this game replay"
-				else: 
-					newButton.self_modulate = Color.LIGHT_YELLOW
-					newButton.tooltip_text = "Waiting for game owner to verify this game"
 
 func get_and_display_player(playerId: int) -> void:
 	var player: PlayerDTO = await webService.getPlayerProfile(playerId)
@@ -153,7 +174,7 @@ func get_and_display_player(playerId: int) -> void:
 
 func display_player(player: PlayerDTO) -> void:
 	if player == null: 
-		Logger.log_error("Player was not found")
+		Logger.log_warning("Player was not found")
 		return
 	hide_main_container()			#TODO: probably at beggining hide and show loading anumation till here
 	$VBoxContainer/HBoxContainer/PlayerProfile.visible = true
@@ -170,13 +191,13 @@ func display_player(player: PlayerDTO) -> void:
 func get_and_display_lobby(lobbyId: int) -> void:
 	var lobby: LobbyDTO = await webService.getLobby(lobbyId)
 	if lobby == null: 
-		Logger.log_error("Lobby with id " + str(lobbyId) + " was not found")
+		Logger.log_warning("Lobby with id " + str(lobbyId) + " was not found")
 		return
 	displayLobby(lobby)
 
 func displayLobby(lobby: LobbyDTO) -> void:
 	if lobby == null:
-		Logger.log_error("No lobby to display")
+		Logger.log_warning("No lobby to display")
 		return
 	hide_main_container()			#TODO: probably at beggining hide and show loading animation till here
 	$VBoxContainer/HBoxContainer/LobbyInfoContainer.visible = true
@@ -293,7 +314,6 @@ func hide_main_container() -> void:
 	$VBoxContainer/HBoxContainer/CreateNewLobbyContainer.visible = false
 	$VBoxContainer/HBoxContainer/GameInfoContainer.visible = false
 
-
 func _on_join_as_spectator_button_pressed() -> void:
 	Logger.log_error("TODO: join without password, but cant be player (has no color)")
 
@@ -302,7 +322,6 @@ func _on_update_profile_button_pressed() -> void:
 	var updateRequest = PlayerUpdateRequest.new()
 	updateRequest.color = $VBoxContainer/HBoxContainer/PlayerProfile/GridContainer/ColorPickerButton.color.to_html(false)
 	webService.updatePlayer(updateRequest)
-	
 
 
 func _on_update_my_color_in_lobby_button_pressed() -> void:
@@ -347,7 +366,7 @@ func start_game_button_pressed(lobbyId: int) -> void:
 	if game != null:
 		display_game(game)
 	else:
-		Logger.log_error("There was a problem starting game")
+		Logger.log_warning("There was a problem starting game - game is null")
 
 func get_and_show_game(gameId: int) -> void:
 	var game: GameDTO = await webService.getGameBasicInfo(gameId)
@@ -359,7 +378,7 @@ func _on_open_create_lobby_window_button_pressed() -> void:
 
 func display_game(game: GameDTO) -> void:
 	if game == null: 
-		Logger.log_error("Game not found")
+		Logger.log_warning("Game is null")
 		return
 	hide_main_container()			#TODO: probably at beggining hide and show loading animation till here
 	$VBoxContainer/HBoxContainer/GameInfoContainer.visible = true
@@ -408,7 +427,7 @@ func display_game(game: GameDTO) -> void:
 func view_button_pressed(gameId: int) -> void:
 	var game = await webService.getFullGame(gameId)
 	if game == null:
-		Logger.log_error("Game not found with id: " + str(gameId))
+		Logger.log_warning("Game not found with id: " + str(gameId))
 		return
 	
 	## Load game

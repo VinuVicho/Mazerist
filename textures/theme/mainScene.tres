@@ -1,6 +1,19 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://hijfoh1qr26t"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://hijfoh1qr26t"]
 
 [ext_resource type="Texture2D" uid="uid://bq4hr1rv72l8d" path="res://test/pngtree-luxury-golden-rectangle-certificate-border-pattern-line-photo-frame-islamic-wedding-vector-png-image_7077586.png" id="1_vtus4"]
+
+[sub_resource type="Gradient" id="Gradient_tlv66"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_76lrd"]
+gradient = SubResource("Gradient_tlv66")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6ob23"]
+gradient = SubResource("Gradient_tlv66")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rm5l0"]
+gradient = SubResource("Gradient_tlv66")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqju2"]
 texture = ExtResource("1_vtus4")
@@ -14,5 +27,13 @@ expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
 [resource]
+CheckButton/icons/checked = SubResource("GradientTexture1D_76lrd")
+CheckButton/icons/checked_disabled = SubResource("GradientTexture1D_6ob23")
+CheckButton/icons/checked_disabled_mirrored = null
+CheckButton/icons/checked_mirrored = null
+CheckButton/icons/unchecked = SubResource("GradientTexture1D_rm5l0")
+CheckButton/icons/unchecked_disabled = null
+CheckButton/icons/unchecked_disabled_mirrored = null
+CheckButton/icons/unchecked_mirrored = null
 HeaderLarge/font_sizes/font_size = 50
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_jqju2")

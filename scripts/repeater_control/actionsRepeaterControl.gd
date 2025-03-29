@@ -76,6 +76,7 @@ func shootAction(position: Vector2, rotation: float):
 		tank.shoot()
 
 func startControl():
+	actionId = 0
 	for a in startingActions:
 		a.call()
 	for n in get_children():

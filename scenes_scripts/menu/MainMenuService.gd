@@ -10,7 +10,6 @@ func _on_login_back_button_pressed() -> void:
 	$LoginMenu.visible = false
 	$FullMainMenu.visible = true
 
-
 func _on_multiplayer_button_pressed() -> void:
 	#TODO: check for saved creds, if there is -> try login (probably even on game launch)
 	$FullMainMenu.visible = false
@@ -23,12 +22,13 @@ func _on_multiplayer_button_pressed() -> void:
 	
 	$LoginMenu.visible = true
 
-
-
 func _on_back_to_main_menu_pressed() -> void:
 	$MultiplayerMenu.visible = false
 	$FullMainMenu.visible = true
 
-
 func _on_log_out_button_pressed() -> void:
 	Global.webService.logOut()
+
+func _on_open_full_menu_button_toggled(show_full_menu: bool) -> void:
+	$FullMainMenu/MainMenuGame.visible = !show_full_menu
+	$FullMainMenu/FullMenu.visible = show_full_menu

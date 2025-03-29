@@ -1,7 +1,4 @@
-class_name GameService extends Node2D
-
-var gameUI: GameUI
-var webService: WebService
+class_name GameServiceAnimated extends IGameService
 
 var _pathToField: Node
 var _pathToPlayers: Node
@@ -33,16 +30,14 @@ var verticalWalls: Array[Array] = []
 var shouldCalculateScore := false
 var gameState: Enums.GameState = Enums.GameState.PRE_GAME
 
-func _init() -> void:
-	Global.gameService = self
-
 func _ready() -> void:
-	Logger.log("Loading GameService")
+	Logger.log_error("GameServiceAnimated")
 	_pathToField = $Field
 	_pathToPlayers = $Players
 	_pathToObjects = $Objects
 	webService = Global.webService
 	gameUI = Global.gameUI
+
 
 func loadGame(game: GameDTO) -> bool:
 	if game == null: return false
@@ -415,14 +410,3 @@ func reloadGame():
 	endGame()
 	var game: GameDTO = await webService.getFullGame(thisGameId)
 	loadGame(game)
-
-
-
-
-
-
-
-
-
-
-

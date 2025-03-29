@@ -17,9 +17,9 @@ func _process(_delta):				#in tank script set_process(false) to disable any proc
 		return
 	
 	var move = 0
-	if Input.is_action_pressed("MoveForward"):
+	if Input.is_action_pressed("UP"):
 		move += 1
-	if Input.is_action_pressed("MoveBack"):
+	if Input.is_action_pressed("DOWN"):
 		move -= 1
 	if (move != 0):
 		#--------------------------------------------------Record movement
@@ -34,9 +34,9 @@ func _process(_delta):				#in tank script set_process(false) to disable any proc
 		tankState.movingActionPressed = 0
 	
 	move = 0
-	if Input.is_action_pressed("TurnRight"):
+	if Input.is_action_pressed("RIGHT"):
 		move += 1
-	if Input.is_action_pressed("TurnLeft"):
+	if Input.is_action_pressed("LEFT"):
 		move -= 1
 	if (move != 0):
 		#Record rotation
