@@ -1,7 +1,4 @@
-class_name GameService extends Node2D
-
-var gameUI: GameUI
-var webService: WebService
+class_name GameService extends IGameService
 
 var _pathToField: Node
 var _pathToPlayers: Node

@@ -3,7 +3,7 @@ extends Node
 var playerId: int = 0
 #	get_tree().root.get_node("MainScene")			get mainScene node
 
-var gameService: GameService
+var gameService: IGameService
 var interfaceService: InterfaceService
 var gameUI: GameUI
 var webService: WebService
