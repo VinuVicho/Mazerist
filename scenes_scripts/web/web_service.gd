@@ -23,7 +23,7 @@ func submitGameReplay(replayDto: SubmitReplayDto) -> GameDTO:
 		return GameDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Submitting replay failed: " + str(responce.status))
+		MyLogger.log_error("Submitting replay failed: " + str(responce.status))
 	return
 
 func endGameTurn(scoresDto: ScoresDto) -> GameDTO:
@@ -33,7 +33,7 @@ func endGameTurn(scoresDto: ScoresDto) -> GameDTO:
 		return GameDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Sending scores failed: " + str(responce.status))
+		MyLogger.log_error("Sending scores failed: " + str(responce.status))
 	return
 
 func getAllGames() -> Array[GameWithStatusAction]:
@@ -43,7 +43,7 @@ func getAllGames() -> Array[GameWithStatusAction]:
 		return GameWithStatusAction.toListOfObjects(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Getting all games failed: " + str(responce.status))
+		MyLogger.log_error("Getting all games failed: " + str(responce.status))
 	return []
 
 func getMyGames() -> Array[GameWithStatusAction]:
@@ -53,7 +53,7 @@ func getMyGames() -> Array[GameWithStatusAction]:
 		return GameWithStatusAction.toListOfObjects(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Getting my games failed: " + str(responce.status))
+		MyLogger.log_error("Getting my games failed: " + str(responce.status))
 	return []
 
 func getGameBasicInfo(gameId: int) -> GameDTO:
@@ -63,7 +63,7 @@ func getGameBasicInfo(gameId: int) -> GameDTO:
 		return GameDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Getting basic info of game failed: " + str(responce.status))
+		MyLogger.log_error("Getting basic info of game failed: " + str(responce.status))
 	return
 
 func getFullGame(gameId: int) -> GameDTO:
@@ -73,7 +73,7 @@ func getFullGame(gameId: int) -> GameDTO:
 		return GameDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Getting full game failed: " + str(responce.status))
+		MyLogger.log_error("Getting full game failed: " + str(responce.status))
 	return
 
 func deleteGame(gameId: int) -> bool:
@@ -83,7 +83,7 @@ func deleteGame(gameId: int) -> bool:
 		return true
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Deleting game failed: " + str(responce.status))
+		MyLogger.log_error("Deleting game failed: " + str(responce.status))
 	return false
 
 #endregion
@@ -97,7 +97,7 @@ func getAllLobbies() -> Array[LobbyDTO]:
 		return LobbyDTO.toListOfObjects(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Getting all lobbies failed: " + str(responce.status))
+		MyLogger.log_error("Getting all lobbies failed: " + str(responce.status))
 	return []
 
 func getMyLobbies() -> Array[LobbyDTO]:
@@ -107,7 +107,7 @@ func getMyLobbies() -> Array[LobbyDTO]:
 		return LobbyDTO.toListOfObjects(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Getting my lobbies failed: " + str(responce.status))
+		MyLogger.log_error("Getting my lobbies failed: " + str(responce.status))
 	return []
 
 func getLobby(lobbyId: int) -> LobbyDTO:
@@ -117,7 +117,7 @@ func getLobby(lobbyId: int) -> LobbyDTO:
 		return LobbyDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Getting my lobbies failed: " + str(responce.status))
+		MyLogger.log_error("Getting my lobbies failed: " + str(responce.status))
 	return
 
 func createLobby(lobbyCreateRequest: LobbyRequest) -> LobbyDTO:
@@ -127,7 +127,7 @@ func createLobby(lobbyCreateRequest: LobbyRequest) -> LobbyDTO:
 		return LobbyDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Getting my lobbies failed: " + str(responce.status))
+		MyLogger.log_error("Getting my lobbies failed: " + str(responce.status))
 	return
 
 func updateLobby(lobbyUpdateRequest: LobbyRequest) -> LobbyDTO:
@@ -137,7 +137,7 @@ func updateLobby(lobbyUpdateRequest: LobbyRequest) -> LobbyDTO:
 		return LobbyDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Updating lobby " + str(lobbyUpdateRequest.lobbyId) + " failed: " + str(responce.status))
+		MyLogger.log_error("Updating lobby " + str(lobbyUpdateRequest.lobbyId) + " failed: " + str(responce.status))
 	return
 
 func deleteLobby(lobbyId: int) -> bool:
@@ -147,7 +147,7 @@ func deleteLobby(lobbyId: int) -> bool:
 		return true
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Deleting lobby " + str(lobbyId) + " failed: " + str(responce.status))
+		MyLogger.log_error("Deleting lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return false
 
 func joinLobby(lobbyJoinRequest: LobbyRequest) -> LobbyDTO:				#Maybe make another request
@@ -157,7 +157,7 @@ func joinLobby(lobbyJoinRequest: LobbyRequest) -> LobbyDTO:				#Maybe make anoth
 		return LobbyDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Joining lobby " + str(lobbyJoinRequest.lobbyId) + " failed: " + str(responce.status))
+		MyLogger.log_error("Joining lobby " + str(lobbyJoinRequest.lobbyId) + " failed: " + str(responce.status))
 	return 
 
 #region lobbyActions
@@ -169,7 +169,7 @@ func setReadyInLobby(lobbyId: int, isReady: bool) -> LobbyDTO:
 		return LobbyDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Setting readiness in lobby " + str(lobbyId) + " failed: " + str(responce.status))
+		MyLogger.log_error("Setting readiness in lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return
 
 func kickPlayerOutOfLobby(lobbyId: int, playerToRemoveId: int) -> LobbyDTO:
@@ -182,7 +182,7 @@ func kickPlayerOutOfLobby(lobbyId: int, playerToRemoveId: int) -> LobbyDTO:
 		return
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Kicking player out of lobby " + str(lobbyId) + " failed: " + str(responce.status))
+		MyLogger.log_error("Kicking player out of lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return
 
 func invitePlayerToLobby(lobbyId: int, playerToInviteId: int) -> LobbyDTO:			#WARNING not works currently
@@ -192,7 +192,7 @@ func invitePlayerToLobby(lobbyId: int, playerToInviteId: int) -> LobbyDTO:			#WA
 		return LobbyDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Inviting player to lobby " + str(lobbyId) + " failed: " + str(responce.status))
+		MyLogger.log_error("Inviting player to lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return
 
 func changeColorInLobby(lobbyId: int, color: String) -> LobbyDTO:
@@ -202,7 +202,7 @@ func changeColorInLobby(lobbyId: int, color: String) -> LobbyDTO:
 		return LobbyDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Changing color in lobby " + str(lobbyId) + " failed: " + str(responce.status))
+		MyLogger.log_error("Changing color in lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return
 
 func switchTeamsInLobby(lobbyId: int, teamId: int) -> LobbyDTO:
@@ -212,7 +212,7 @@ func switchTeamsInLobby(lobbyId: int, teamId: int) -> LobbyDTO:
 		return LobbyDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Changing color in lobby " + str(lobbyId) + " failed: " + str(responce.status))
+		MyLogger.log_error("Changing color in lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return
 
 func changePasswordForLobby(request: LobbyRequest) -> LobbyDTO:
@@ -222,7 +222,7 @@ func changePasswordForLobby(request: LobbyRequest) -> LobbyDTO:
 		return LobbyDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Changing password in lobby " + str(request.lobbyId) + " failed: " + str(responce.status))
+		MyLogger.log_error("Changing password in lobby " + str(request.lobbyId) + " failed: " + str(responce.status))
 	return
 
 func startGameInLobby(lobbyId: int) -> GameDTO:
@@ -232,7 +232,7 @@ func startGameInLobby(lobbyId: int) -> GameDTO:
 		return GameDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Starting game in lobby " + str(lobbyId) + " failed: " + str(responce.status))
+		MyLogger.log_error("Starting game in lobby " + str(lobbyId) + " failed: " + str(responce.status))
 	return
 #endregion
 
@@ -248,7 +248,7 @@ func getPlayerProfile(playerId: int) -> PlayerDTO:
 	
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Getting player " + str(playerId) + " failed: " + str(responce.status))
+		MyLogger.log_error("Getting player " + str(playerId) + " failed: " + str(responce.status))
 	return
 
 func getMyProfile() -> PlayerDTO:
@@ -258,7 +258,7 @@ func getMyProfile() -> PlayerDTO:
 		return PlayerDTO.toObject(responce.body_as_json())
 	
 	if responce.status == USER_CANCELLED_STATUS_CODE: return
-	Logger.log_error("Getting my profile failed: " + str(responce.status))
+	MyLogger.log_error("Getting my profile failed: " + str(responce.status))
 	logOut()
 	return
 
@@ -269,7 +269,7 @@ func getAllPlayers() -> Array[PlayerDTO]:
 		return PlayerDTO.toListOfObjects(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Getting all players failed: " + str(responce.status))
+		MyLogger.log_error("Getting all players failed: " + str(responce.status))
 	return []
 
 func updatePlayer(playerUpdateRequest: PlayerUpdateRequest) -> PlayerDTO:		#WARNING: not implemented
@@ -279,7 +279,7 @@ func updatePlayer(playerUpdateRequest: PlayerUpdateRequest) -> PlayerDTO:		#WARN
 		return PlayerDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Updating my playerInfo failed: " + str(responce.status))
+		MyLogger.log_error("Updating my playerInfo failed: " + str(responce.status))
 	return
 
 #endregion
@@ -302,7 +302,7 @@ func register_player(playerCreateRequest: PlayerCreateRequest) -> PlayerDTO:
 		return PlayerDTO.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("there was an error registering player: " + str(responce.status) + playerCreateRequest.to_string())
+		MyLogger.log_error("there was an error registering player: " + str(responce.status) + playerCreateRequest.to_string())
 	return
 
 func login_player(playerLoginRequest: PlayerLoginRequest) -> bool:
@@ -313,7 +313,7 @@ func login_player(playerLoginRequest: PlayerLoginRequest) -> bool:
 		return true
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Auth was unsuccessful " + str(responce.status))
+		MyLogger.log_error("Auth was unsuccessful " + str(responce.status))
 	return false
 
 func logOut():
@@ -328,7 +328,7 @@ func logOut():
 		if (header.begins_with("Auth")):
 			headers.remove_at(i)
 			authentinticated = false
-			Logger.log("Player loggined out")
+			MyLogger.log("Player loggined out")
 			return
 		else: i = i + 1
 
@@ -353,15 +353,15 @@ func addAuthorizationBearer(JWToken: String, saveToken: bool = true):
 #endregion
 
 func send_map_request(request: FieldRequestForGen) -> MapInfo:
-	Logger.log_warning("WebService send_map_request: Do I really use this?")
+	MyLogger.log_warning("WebService send_map_request: Do I really use this?")
 	var requestBody = JSON.stringify(request.toJSON());
 	var responce: HTTPResult = await send_simle_httpRequest("generate", HTTPClient.METHOD_POST, requestBody)
-	Logger.log(responce.status)
+	MyLogger.log(responce.status)
 	if responce.success() && responce.status_ok():
 		return MapInfo.toObject(responce.body_as_json())
 	
 	if responce.status != USER_CANCELLED_STATUS_CODE: 
-		Logger.log_error("Error, bad responce" + str(responce.status))
+		MyLogger.log_error("Error, bad responce" + str(responce.status))
 	return 
 
 #region Helper methods
@@ -381,16 +381,16 @@ var userLastRequestHash = 0
 func send_simle_httpRequest(url: String, method := HTTPClient.Method.METHOD_GET, request_data := "", cancel_previous_request := true):
 	var time_before = Time.get_ticks_msec()
 	if cancel_previous_request: userLastRequestHash = time_before
-	Logger.log_with_color("Sending request (" + str(time_before) + "): " + url + " " + request_data, "LIME_GREEN")
+	MyLogger.log_with_color("Sending request (" + str(time_before) + "): " + url + " " + request_data, "LIME_GREEN")
 	var thisHttpRequest = simpleHttpRequest.duplicate()
 	add_child(thisHttpRequest)
 	
 	var resp: HTTPResult = await thisHttpRequest.async_request(serverUrl + url, headers, method, request_data)
-	Logger.log_with_color("Recieved request (" + str(time_before) + ") in " + str(Time.get_ticks_msec() - time_before) + "ms: " + resp.body_as_string(), "GREEN_YELLOW")
+	MyLogger.log_with_color("Recieved request (" + str(time_before) + ") in " + str(Time.get_ticks_msec() - time_before) + "ms: " + resp.body_as_string(), "GREEN_YELLOW")
 	thisHttpRequest.queue_free()
 	
 	if cancel_previous_request && userLastRequestHash != time_before:
-		Logger.log_warning("Request (" + str(time_before) + ") is cancelled by other action from user: " + str(userLastRequestHash))
+		MyLogger.log_warning("Request (" + str(time_before) + ") is cancelled by other action from user: " + str(userLastRequestHash))
 		resp.status = USER_CANCELLED_STATUS_CODE
 		return resp
 	if resp.status_err():
@@ -398,12 +398,12 @@ func send_simle_httpRequest(url: String, method := HTTPClient.Method.METHOD_GET,
 		match resp.status:
 			401:
 				authentinticated = false
-				Logger.log_error("Auth error, log in again", true)
+				MyLogger.log_error("Auth error, log in again", true)
 			404:
-				Logger.log_warning("Resource not found for " + url)
+				MyLogger.log_warning("Resource not found for " + url)
 			405: 
-				Logger.log_error(resp.body_as_json()["message"], true)
+				MyLogger.log_error(resp.body_as_json()["message"], true)
 			500:
-				Logger.log_error("Nah, server down")
+				MyLogger.log_error("Nah, server down")
 		pass
 	return resp

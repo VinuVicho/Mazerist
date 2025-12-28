@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://hijfoh1qr26t"]
 
-[ext_resource type="Texture2D" uid="uid://bq4hr1rv72l8d" path="res://test/pngtree-luxury-golden-rectangle-certificate-border-pattern-line-photo-frame-islamic-wedding-vector-png-image_7077586.png" id="1_vtus4"]
+[ext_resource type="Texture2D" uid="uid://bfxhkfpythwr6" path="res://test/pngtree-luxury-golden-rectangle-certificate-border-pattern-line-photo-frame-islamic-wedding-vector-png-image_7077586.png" id="1_vtus4"]
 
 [sub_resource type="Gradient" id="Gradient_tlv66"]
 offsets = PackedFloat32Array(1)

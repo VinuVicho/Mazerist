@@ -10,4 +10,3 @@ func _init() -> void:
 
 func _ready() -> void:
 	Global.interfaceService.changeGameState(Enums.ProgramState.MAIN_MENU)
-

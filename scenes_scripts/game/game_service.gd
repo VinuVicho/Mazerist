@@ -37,7 +37,7 @@ func _init() -> void:
 	Global.gameService = self
 
 func _ready() -> void:
-	Logger.log("Loading GameService")
+	MyLogger.log("Loading GameService")
 	_pathToField = $Field
 	_pathToPlayers = $Players
 	_pathToObjects = $Objects
@@ -88,7 +88,7 @@ func startGame():
 		if n.is_in_group("Bullet"):
 			n.queue_free()
 	gameState = Enums.GameState.GAME
-	Logger.log("Tanks in game: " + str(playersInGame))
+	MyLogger.log("Tanks in game: " + str(playersInGame))
 
 func createMainPlayer():
 	playersInGame += 1
@@ -157,7 +157,7 @@ func prepareObjects(objPositions: Array, players: Dictionary):
 				newArtefact.name = "Artefact" + str(objPos[2])
 				newArtefact.modulate = Color.from_string(player.color, Color.WHITE)
 			_:
-				Logger.log_error("Strange object position found: " + str(positionType))
+				MyLogger.log_error("Strange object position found: " + str(positionType))
 				var newCircle = circleSprite.duplicate()
 				_pathToObjects.add_child(newCircle)
 				newCircle.position = Vector2(50 + objPos[1] * 100, 50 + objPos[0] * 100)
@@ -331,7 +331,7 @@ func createPlayerRecording(playerInfo: PlayerGameInfoDto, actions: Array, tankNa
 
 func submitReplay():
 	if previousActions == []: 
-		Logger.log_error("You did not created replay yet to submit it")
+		MyLogger.log_error("You did not created replay yet to submit it")
 		return
 	var replayRequest = SubmitReplayDto.new()
 	replayRequest.gameId = thisGameId
@@ -354,13 +354,13 @@ func tankDied(tank: PhysicsBody2D, bullet: PhysicsBody2D = null):
 	if bullet != null:
 		#Tank replay is marked dead when replay is finished, in that case don't change 
 		if (tank.get_node("TankController").actionId == -1):
-			Logger.log(tank.name + " (already finished replay) was shoot by " + bullet.name)
+			MyLogger.log(tank.name + " (already finished replay) was shoot by " + bullet.name)
 			return
-		Logger.log(tank.name + " died by " + bullet.name)
+		MyLogger.log(tank.name + " died by " + bullet.name)
 	else: 
-		Logger.log(tank.name + " died bc has no more actions")
+		MyLogger.log(tank.name + " died bc has no more actions")
 	playersAlive -= 1
-	Logger.log("Players left alive: " + str(playersAlive))
+	MyLogger.log("Players left alive: " + str(playersAlive))
 	if playersAlive == 0:
 		endGameReal()
 		artifactDelivered(-1)
@@ -382,7 +382,7 @@ func endGame():
 			n.queue_free()
 
 func cleanField():
-	Logger.log("cleaning field")
+	MyLogger.log("cleaning field")
 	gameState = Enums.GameState.PRE_GAME
 	thisPlayerInfo = null
 	previousActions = []
@@ -415,14 +415,3 @@ func reloadGame():
 	endGame()
 	var game: GameDTO = await webService.getFullGame(thisGameId)
 	loadGame(game)
-
-
-
-
-
-
-
-
-
-
-

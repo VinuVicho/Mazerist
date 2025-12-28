@@ -44,7 +44,7 @@ func createTimers(actions: Array):
 				)
 			Enums.ActionType.SHOOT:
 				actionToDo = (shootAction(Vector2(float(a[2])/1000, float(a[3])/1000), float(a[4])/100))
-			_: Logger.log_error("Wrong action type: " + str(a[1]))
+			_: MyLogger.log_error("Wrong action type: " + str(a[1]))
 		var time := float(a[5])/1000
 		if time == 0:
 			startingActions.append(actionToDo)

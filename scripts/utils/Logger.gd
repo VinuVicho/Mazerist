@@ -1,4 +1,4 @@
-class_name Logger
+class_name MyLogger
 
 static var logs: PackedStringArray = []
 

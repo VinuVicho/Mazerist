@@ -36,7 +36,7 @@ func _on_back_to_menu_button_pressed() -> void:
 
 func _on_restart_replay_button_pressed() -> void:
 	if reloadGameButtonPressed: 
-		Logger.log_error("Game is reloading, cannot restart now")
+		MyLogger.log_error("Game is reloading, cannot restart now")
 		return
 	$TimerBeforeStart.stop()
 	$StartGamePanel.visible = true

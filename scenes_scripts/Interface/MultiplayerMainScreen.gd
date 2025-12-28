@@ -41,7 +41,7 @@ func _on_my_profile_button_pressed() -> void:
 	
 	var playerProfile: PlayerDTO = await webService.getMyProfile()
 	if playerProfile == null:
-		Logger.log_error("Your profile not found...")
+		MyLogger.log_error("Your profile not found...")
 		Global.interfaceService.exit_multiplayer()
 		return
 	Global.playerId = playerProfile.playerId
@@ -73,7 +73,7 @@ func _on_send_search_button_pressed() -> void:
 	#Getting PLayers
 	if $VBoxContainer/HBoxContainer/MultiplayerMenu/HBoxContainer/SearchForOptions.selected == 1:
 		var playerList: Array[PlayerDTO] = await Global.webService.getAllPlayers()
-		if playerList.size() == 0: Logger.log_warning("empty responce")
+		if playerList.size() == 0: MyLogger.log_warning("empty responce")
 		
 		for player in playerList:
 			var newButton = Button.new()
@@ -133,7 +133,7 @@ func _on_send_search_button_pressed() -> void:
 		resultList = await Global.webService.getMyLobbies()
 	else: 
 		resultList = await Global.webService.getAllLobbies()
-	if resultList.size() == 0: Logger.log_warning("empty responce")
+	if resultList.size() == 0: MyLogger.log_warning("empty responce")
 	
 	for lobby in resultList:
 		var newButton = Button.new()
@@ -174,7 +174,7 @@ func get_and_display_player(playerId: int) -> void:
 
 func display_player(player: PlayerDTO) -> void:
 	if player == null: 
-		Logger.log_warning("Player was not found")
+		MyLogger.log_warning("Player was not found")
 		return
 	hide_main_container()			#TODO: probably at beggining hide and show loading anumation till here
 	$VBoxContainer/HBoxContainer/PlayerProfile.visible = true
@@ -191,13 +191,13 @@ func display_player(player: PlayerDTO) -> void:
 func get_and_display_lobby(lobbyId: int) -> void:
 	var lobby: LobbyDTO = await webService.getLobby(lobbyId)
 	if lobby == null: 
-		Logger.log_warning("Lobby with id " + str(lobbyId) + " was not found")
+		MyLogger.log_warning("Lobby with id " + str(lobbyId) + " was not found")
 		return
 	displayLobby(lobby)
 
 func displayLobby(lobby: LobbyDTO) -> void:
 	if lobby == null:
-		Logger.log_warning("No lobby to display")
+		MyLogger.log_warning("No lobby to display")
 		return
 	hide_main_container()			#TODO: probably at beggining hide and show loading animation till here
 	$VBoxContainer/HBoxContainer/LobbyInfoContainer.visible = true
@@ -315,7 +315,7 @@ func hide_main_container() -> void:
 	$VBoxContainer/HBoxContainer/GameInfoContainer.visible = false
 
 func _on_join_as_spectator_button_pressed() -> void:
-	Logger.log_error("TODO: join without password, but cant be player (has no color)")
+	MyLogger.log_error("TODO: join without password, but cant be player (has no color)")
 
 
 func _on_update_profile_button_pressed() -> void:
@@ -366,7 +366,7 @@ func start_game_button_pressed(lobbyId: int) -> void:
 	if game != null:
 		display_game(game)
 	else:
-		Logger.log_warning("There was a problem starting game - game is null")
+		MyLogger.log_warning("There was a problem starting game - game is null")
 
 func get_and_show_game(gameId: int) -> void:
 	var game: GameDTO = await webService.getGameBasicInfo(gameId)
@@ -378,7 +378,7 @@ func _on_open_create_lobby_window_button_pressed() -> void:
 
 func display_game(game: GameDTO) -> void:
 	if game == null: 
-		Logger.log_warning("Game is null")
+		MyLogger.log_warning("Game is null")
 		return
 	hide_main_container()			#TODO: probably at beggining hide and show loading animation till here
 	$VBoxContainer/HBoxContainer/GameInfoContainer.visible = true
@@ -427,7 +427,7 @@ func display_game(game: GameDTO) -> void:
 func view_button_pressed(gameId: int) -> void:
 	var game = await webService.getFullGame(gameId)
 	if game == null:
-		Logger.log_warning("Game not found with id: " + str(gameId))
+		MyLogger.log_warning("Game not found with id: " + str(gameId))
 		return
 	
 	## Load game
@@ -435,7 +435,7 @@ func view_button_pressed(gameId: int) -> void:
 		Global.interfaceService.changeGameState(Enums.ProgramState.GAME)
 		return
 	
-	Logger.log_error("Loading game failed")
+	MyLogger.log_error("Loading game failed")
 
 
 func _on_option_button_item_selected(index: int) -> void:

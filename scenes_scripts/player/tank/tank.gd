@@ -130,7 +130,7 @@ func _on_objects_collision_area_entered(area: Area2D) -> void:
 			$AuraSprite.visible = false
 			tankState.isHoldingArtefact = false
 			tankState.artefact = null
-			Logger.log("Artefact delivered by " + str(inGamePlayerId))			#TODO: show in game
+			MyLogger.log("Artefact delivered by " + str(inGamePlayerId))			#TODO: show in game
 	if area.is_in_group("Artefact"):
 		$AuraSprite.visible = true
 		area.visible = false

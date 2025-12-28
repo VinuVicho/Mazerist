@@ -64,8 +64,8 @@ func triggerUserAction():
 	if action != null: match action:
 		MAIN_MENU_POSITION_TYPE.EXIT: exitGame()
 		MAIN_MENU_POSITION_TYPE.MULTIPLAYER: _on_online_button_pressed()
-		MAIN_MENU_POSITION_TYPE.SOLO: Logger.log_error("Not Implemented")		#TODO
-		MAIN_MENU_POSITION_TYPE.OPTIONS: Logger.log_error("Not Implemented")	#TODO
+		MAIN_MENU_POSITION_TYPE.SOLO: MyLogger.log_error("Not Implemented")		#TODO
+		MAIN_MENU_POSITION_TYPE.OPTIONS: MyLogger.log_error("Not Implemented")	#TODO
 
 func addMainMenuObjects(sizeX, sizeY) -> void:
 	mainPositions.clear()
@@ -171,7 +171,7 @@ func addMultiplayerButton(sizeX: int, sizeY: int) -> void:
 func changePositionAndTriggerAction(moveToPosX: int, moveToPosY: int) -> Callable:
 	return func (): 
 		if $PlayerContainer/AnimationPlayer.is_playing():
-			Logger.log_warning("Currently animation is playing, probably fix this later")					#TODO
+			MyLogger.log_warning("Currently animation is playing, probably fix this later")					#TODO
 			return
 		var path = MapGenerator.findPath(currentPosX, currentPosY, moveToPosX, moveToPosY, mapSize.x, mapSize.y, walls)
 		currentPosX = moveToPosX
@@ -199,10 +199,10 @@ func resetCurve():
 	$PlayerContainer/PathForMazeSolver/PathFollow2D.position = Vector2(0, 0)
 
 func _on_online_button_pressed() -> void:
-	Logger.log("Executing multiplayer button")
+	MyLogger.log("Executing multiplayer button")
 	get_parent().get_parent()._on_multiplayer_button_pressed()
 func exitGame() -> void:
-	Logger.log("Executing exit game button")
+	MyLogger.log("Executing exit game button")
 	Global.interfaceService._on_exit_button_pressed()
 
 func _on_visibility_changed() -> void:

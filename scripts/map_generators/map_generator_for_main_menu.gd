@@ -157,7 +157,7 @@ static func findPath(fromPosX: int, fromPosY: int, toPosX: int, toPosY: int, map
 					if posX == toPosX && nextPosY == toPosY:
 						return findPathFromDict(pathDict, fromPosX * 1000 + fromPosY, posX * 1000 + nextPosY)
 					positionsToCheck.append([posX, nextPosY])
-	Logger.log_warning("Couldn't find path from " + str([fromPosX, fromPosY]) + " to " + str([toPosX, toPosY]) + " with walls: " + str(walls))
+	MyLogger.log_warning("Couldn't find path from " + str([fromPosX, fromPosY]) + " to " + str([toPosX, toPosY]) + " with walls: " + str(walls))
 	return []
 
 static func findPathFromDict(dict: Dictionary, fromPosId: int, toPosId: int) -> Array:

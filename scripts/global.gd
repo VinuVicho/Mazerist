@@ -12,9 +12,9 @@ var mainScene: MainScene
 var errorDisplayer: ErrorDisplayer
 
 func _ready():
-	if gameService == null: Logger.log_error("No game service. MEGA-ERROR")
-	if webService == null: Logger.log_error("No web service. MEGA-ERROR")
+	if gameService == null: MyLogger.log_error("No game service. MEGA-ERROR")
+	if webService == null: MyLogger.log_error("No web service. MEGA-ERROR")
 
 func verifyObjectIsNotNullAndReturnIt(obj):
-	if obj == null: Logger.log_error("Object is null")
+	if obj == null: MyLogger.log_error("Object is null")
 	return obj

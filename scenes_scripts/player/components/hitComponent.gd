@@ -13,4 +13,3 @@ func process_hit():
 		return
 	get_parent().makeTankDead()
 	print(get_parent().name + " died")
-
